@@ -44,7 +44,11 @@ $students = [
     </header>
     <main>
         <section>
-            <?php  ?>
+            <?php foreach($students as $one_student) : ?>
+                <h2><?php echo $one_student["first_name"]." ".$one_student["second_name"]  ?></h2>
+                
+            <?php endforeach  ?>
+            
         </section>
 
     </main>
