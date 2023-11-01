@@ -50,8 +50,9 @@
         <ul>
             <?php foreach($students as $one_student): ?>
                 <li>
-                    <?php echo $one_student["first_name"]. " ".$one_student["second_name"]." / Fakulta: ".$one_student["college"] ?>
+                    <?php echo $one_student["first_name"]. " ".$one_student["second_name"] ?>
                 </li>
+                <a href="jeden-ziak.php?id=<?= $one_student["id"]?> ">Viac informácií</a>
             <?php endforeach; ?>
         </ul>
 
