@@ -11,6 +11,7 @@
             exit;
         }
         
+        if (isset($_GET["id"]) and is_numeric($_GET["id"])){
         $sql = "SELECT * 
                 FROM student
                 WHERE id = ".$_GET["id"];
@@ -21,7 +22,7 @@
             echo mysqli_error($connection);
         } else {
             $students = mysqli_fetch_assoc($result);
-        }
+        }}
             
         // var_dump($students);
 ?>

@@ -52,7 +52,7 @@
                 <li>
                     <?php echo $one_student["first_name"]. " ".$one_student["second_name"] ?>
                 </li>
-                <a href="jeden-ziak.php?id=<?= $one_student["id"]?> ">Viac informácií</a>
+                <a href="jeden-ziak.php?id=<?= $one_student['id']?> ">Viac informácií</a>
             <?php endforeach; ?>
         </ul>
 
