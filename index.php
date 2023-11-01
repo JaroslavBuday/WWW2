@@ -11,7 +11,7 @@
     </header>
     <main>
         <section>
-            
+            <a href="ziaci.php">Zoznam žiakov</a>
             
         </section>
 

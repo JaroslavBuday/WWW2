@@ -16,7 +16,9 @@
         // echo "Úspešné prihlásenie do databázy";
 
     //NASTAVENIE SQL DOTAZU
-        $sql = "SELECT * FROM student";
+        $sql = "SELECT * 
+                FROM student
+                ORDER BY first_name ASC";
             // echo "<br>";
 
     // ODOSLANIE DOTAZU DO DATABAZY-VRATI OBJEKT
@@ -40,6 +42,7 @@
     <title>Document</title>
 </head>
 <body>
+    <a href="index.php">Úvodná strana</a>
     <h1>Zoznam žiakov školy</h1>
     <?php if(empty($students)):    ?>
         <p>Žiadny žiaci v databáze</p>
@@ -47,7 +50,7 @@
         <ul>
             <?php foreach($students as $one_student): ?>
                 <li>
-                    <?php echo $one_student["first_name"]. " ".$one_student["second_name"] ?>
+                    <?php echo $one_student["first_name"]. " ".$one_student["second_name"]." / Fakulta: ".$one_student["college"] ?>
                 </li>
             <?php endforeach; ?>
         </ul>
