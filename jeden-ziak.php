@@ -13,7 +13,7 @@
         
         $sql = "SELECT * 
                 FROM student
-                WHERE id = 4";
+                WHERE id = ".$_GET["id"];
         
          $result = mysqli_query($connection, $sql); 
             
@@ -51,7 +51,7 @@
 
     </main>
     <footer>
-
+        <a href="ziaci.php">Späť</a>
     </footer>
     
 </body>
