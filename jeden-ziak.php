@@ -13,7 +13,7 @@
         
         $sql = "SELECT * 
                 FROM student
-                WHERE id = 1";
+                WHERE id = 4";
         
          $result = mysqli_query($connection, $sql); 
             
@@ -38,6 +38,16 @@
         <h1>Informácie o žiakovi</h1>
     </header>
     <main>
+        <section>
+            <?php if ($students === null): ?>
+                <p>Žiak nefiguruje v databáze</p>
+            <?php else: ?>
+                <h2><?= $students["first_name"]." ".$students["second_name"]  ?></h2>
+                <p>Vek: <?= $students["age"]?> </p>
+                <p>Dodatočné informácie: <?= $students["life"]?> </p>
+                <p>Fakulta: <?= $students["college"]?> </p>
+            <?php endif ?>
+        </section>
 
     </main>
     <footer>
