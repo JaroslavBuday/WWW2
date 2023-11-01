@@ -16,12 +16,14 @@
                 WHERE id = 1";
         
          $result = mysqli_query($connection, $sql); 
-            // var_dump($result);
-            // echo "<br>";
-            // echo "<br>";
-
-        $students = mysqli_fetch_assoc($result); // jeden zaznam staci fetch assoc a vytiahne mi rovno asociativne pole
-        var_dump($students);
+            
+         if ($result === false) {
+            echo mysqli_error($connection);
+        } else {
+            $students = mysqli_fetch_assoc($result);
+        }
+            
+        // var_dump($students);
 ?>
 
 <!DOCTYPE html>
