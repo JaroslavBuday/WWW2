@@ -1,3 +1,9 @@
+<?php 
+//PODMIENKA ABY - AK JE POLE PRAZDNE NEVYPISOVALO HO DO STRANKY
+if ($_SERVER["REQUEST_METHOD"]=== "POST")
+{var_dump($_POST);}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
