@@ -17,8 +17,6 @@
         </section>
 
     </main>
-    <footer>
-        <p>&copy; Škola čar a kúziel v bradaviciach, BJ 2023</p>
-    </footer>
+    <?php require "footer.php"; ?>
 </body>
 </html>
