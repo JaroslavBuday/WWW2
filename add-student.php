@@ -1,6 +1,8 @@
 <?php 
 
 if ($_SERVER["REQUEST_METHOD"]=== "POST"){  
+
+    require "assets/database.php";
       
     $sql = "INSERT INTO student (first_name, second_name, age, life, college)
             VALUES ('".$_POST["first_name"]."',
@@ -9,9 +11,16 @@ if ($_SERVER["REQUEST_METHOD"]=== "POST"){
                     '".$_POST["life"]."',
                     '".$_POST["college"]."')";  
                     
-    var_dump($sql);
-    exit;
-    }
+    // var_dump($sql);
+    // exit;
+
+    $result = mysqli_query($connection, $sql);
+
+    if($result === false){
+        mysqli_error($connection);
+    } else {
+        echo "úspešne vložené";
+    }}
 ?>
 
 
