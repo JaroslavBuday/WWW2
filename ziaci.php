@@ -1,5 +1,5 @@
 <?php 
-    require "database.php";
+    require "assets/database.php";
 
     //NASTAVENIE SQL DOTAZU
         $sql = "SELECT * 
@@ -28,11 +28,13 @@
     <title>Document</title>
 </head>
 <body>
-    <?php require "header.php"; ?>
+    <?php require "assets/header.php"; ?>
     <main>
+        <section class="main-heading">
+            <h1>Zoznam žiakov školy</h1>
+        </section>
         <section class="students-list">
             <a href="index.php">Úvodná strana</a>
-            <h1>Zoznam žiakov školy</h1>
             <?php if(empty($students)):    ?>
                 <p>Žiadny žiaci v databáze</p>
             <?php else:  ?>
@@ -49,7 +51,7 @@
         </section>
         
     </main>
-    <?php require "footer.php"; ?>
+    <?php require "assets/footer.php"; ?>
 
 </body>
 </html>

@@ -6,17 +6,16 @@
     <title>Document</title>
 </head>
 <body>
-    <?php require "header.php"; ?>
+    <?php require "assets/header.php"; ?>
     <main>
         <section class="main-heading">
-        <h1>Škola čar a kúziel v bradaviciach</h1>
+            <h1>Škola čar a kúziel v bradaviciach</h1>
         </section>
         <section>
             <a href="ziaci.php">Zoznam žiakov</a>
-            
         </section>
 
     </main>
-    <?php require "footer.php"; ?>
+    <?php require "assets/footer.php"; ?>
 </body>
 </html>

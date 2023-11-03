@@ -1,5 +1,5 @@
 <?php 
-        require "database.php";
+        require "assets/database.php";
         
         if (isset($_GET["id"]) and is_numeric($_GET["id"])){
         $sql = "SELECT * 
@@ -25,11 +25,13 @@
     <title>Document</title>
 </head>
 <body>
-    <?php require "header.php"; ?>
+    <?php require "assets/header.php"; ?>
     <main>
-        <section>
-        <a href="ziaci.php">Zoznam žiakov</a>
+        <section class="main-heading">
             <h1>Informácie o žiakovi</h1>
+        </section>
+        <section>
+            <a href="ziaci.php">Zoznam žiakov</a>
             <?php if ($students === null): ?>
                 <p>Žiak nefiguruje v databáze</p>
             <?php else: ?>
@@ -42,7 +44,7 @@
         
     </main>
     
-    <?php require "footer.php"; ?>
+    <?php require "assets/footer.php"; ?>
     
 </body>
 </html>
