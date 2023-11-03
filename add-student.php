@@ -19,7 +19,8 @@ if ($_SERVER["REQUEST_METHOD"]=== "POST"){
     if($result === false){
         mysqli_error($connection);
     } else {
-        echo "úspešne vložené";
+        $id = mysqli_insert_id($connection);
+        echo "Úspešne vložené, ID žiaka: $id";
     }}
 ?>
 
