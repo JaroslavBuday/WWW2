@@ -25,11 +25,11 @@
     <title>Document</title>
 </head>
 <body>
-    <header>
-        <h1>Informácie o žiakovi</h1>
-    </header>
+    <?php require "header.php"; ?>
     <main>
         <section>
+        <a href="ziaci.php">Zoznam žiakov</a>
+            <h1>Informácie o žiakovi</h1>
             <?php if ($students === null): ?>
                 <p>Žiak nefiguruje v databáze</p>
             <?php else: ?>
@@ -39,10 +39,11 @@
                 <p>Fakulta: <?= $students["college"]?> </p>
             <?php endif ?>
         </section>
-
+        
     </main>
+    
     <footer>
-        <a href="ziaci.php">Späť</a>
+        <p>&copy; Škola čar a kúziel v bradaviciach, BJ 2023</p>
     </footer>
     
 </body>

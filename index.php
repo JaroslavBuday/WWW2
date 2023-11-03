@@ -6,10 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <header>
-        <h1>Škola čar a kúziel v bradaviciach</h1>
-    </header>
+    <?php require "header.php"; ?>
     <main>
+        <section class="main-heading">
+        <h1>Škola čar a kúziel v bradaviciach</h1>
+        </section>
         <section>
             <a href="ziaci.php">Zoznam žiakov</a>
             
@@ -17,7 +18,7 @@
 
     </main>
     <footer>
-
+        <p>&copy; Škola čar a kúziel v bradaviciach, BJ 2023</p>
     </footer>
 </body>
 </html>

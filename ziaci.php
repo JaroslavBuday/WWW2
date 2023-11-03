@@ -28,21 +28,30 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="index.php">Úvodná strana</a>
-    <h1>Zoznam žiakov školy</h1>
-    <?php if(empty($students)):    ?>
-        <p>Žiadny žiaci v databáze</p>
-    <?php else:  ?>
-        <ul>
-            <?php foreach($students as $one_student): ?>
-                <li>
-                    <?php echo $one_student["first_name"]. " ".$one_student["second_name"] ?>
-                </li>
-                <a href="jeden-ziak.php?id=<?= $one_student['id']?> ">Viac informácií</a>
-            <?php endforeach; ?>
-        </ul>
+    <?php require "header.php"; ?>
+    <main>
+        <section class="students-list">
+            <a href="index.php">Úvodná strana</a>
+            <h1>Zoznam žiakov školy</h1>
+            <?php if(empty($students)):    ?>
+                <p>Žiadny žiaci v databáze</p>
+            <?php else:  ?>
+                <ul>
+                    <?php foreach($students as $one_student): ?>
+                        <li>
+                            <?php echo $one_student["first_name"]. " ".$one_student["second_name"] ?>
+                        </li>
+                        <a href="jeden-ziak.php?id=<?= $one_student['id']?> ">Viac informácií</a>
+                    <?php endforeach; ?>
+                </ul>
 
-    <?php endif; ?>
+            <?php endif; ?>
+        </section>
+        
+    </main>
+    <footer>
+        <p>&copy; Škola čar a kúziel v bradaviciach, BJ 2023</p>
+    </footer>
 
 </body>
 </html>
