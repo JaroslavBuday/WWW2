@@ -1,9 +1,20 @@
 <?php 
-//PODMIENKA ABY - AK JE POLE PRAZDNE NEVYPISOVALO HO DO STRANKY
-if ($_SERVER["REQUEST_METHOD"]=== "POST")
-{var_dump($_POST);}
 
+if ($_SERVER["REQUEST_METHOD"]=== "POST"){  
+      
+    $sql = "INSERT INTO student (first_name, second_name, age, life, college)
+            VALUES ('".$_POST["first_name"]."',
+                    '".$_POST["second_name"]."',
+                    '".$_POST["age"]."',
+                    '".$_POST["life"]."',
+                    '".$_POST["college"]."')";  
+                    
+    var_dump($sql);
+    exit;
+    }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
