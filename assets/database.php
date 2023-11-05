@@ -1,5 +1,12 @@
 <?php 
 
+/**
+ * Pripojenie sa do databazy
+ * 
+ * @return object - pre pripojenie do databazy
+ */
+
+ 
 function connectionDB() {
     // NASTAVENIE - PRIHLASOVACIE UDAJE
     $db_host = "localhost";  //pokial by nesiel localhost tak 127.0.0.1
