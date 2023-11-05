@@ -5,23 +5,24 @@ if ($_SERVER["REQUEST_METHOD"]=== "POST"){
     require "assets/database.php";
       
     $sql = "INSERT INTO student (first_name, second_name, age, life, college)
-        VALUES ('". mysqli_escape_string($connection, $_POST["first_name"])."',
-                '". mysqli_escape_string($connection, $_POST["second_name"])."',
-                '". mysqli_escape_string($connection, $_POST["age"])."',
-                '". mysqli_escape_string($connection, $_POST["life"])."',
-                '". mysqli_escape_string($connection, $_POST["college"])."')";  
-                    
-    // var_dump($sql);
-    // exit;
+        VALUES (?,?,?,?,?)";  
+        
+        $statement = mysqli_prepare($connection, $sql);
 
-    $result = mysqli_query($connection, $sql);
+        mysqli_stmt_bind_param($statement,"ssiss", $_POST["first_name"], $_POST["second_name"],$_POST["age"], $_POST["life"],$_POST["college"]);
 
-    if($result === false){
-        mysqli_error($connection);
-    } else {
-        $id = mysqli_insert_id($connection);
-        echo "Úspešne vložené, ID žiaka: $id";
-    }}
+        mysqli_stmt_execute($statement);
+    
+
+    // $result = mysqli_query($connection, $sql);
+
+    // if($result === false){
+    //     mysqli_error($connection);
+    // } else {
+    //     $id = mysqli_insert_id($connection);
+    //     echo "Úspešne vložené, ID žiaka: $id";
+    // }
+}
 ?>
 
 
