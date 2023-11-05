@@ -6,6 +6,8 @@ if ($_SERVER["REQUEST_METHOD"]=== "POST"){
       
     $sql = "INSERT INTO student (first_name, second_name, age, life, college)
         VALUES (?,?,?,?,?)";  
+
+        $connection = connectionDB();
         
         $statement = mysqli_prepare($connection, $sql);
 
@@ -36,6 +38,7 @@ if ($_SERVER["REQUEST_METHOD"]=== "POST"){
 </head>
 <body>
     <?php require "assets/header.php"; ?>
+    
     <main>
         <section class="add-form">
             <form action="add-student.php" method="post">
@@ -47,6 +50,11 @@ if ($_SERVER["REQUEST_METHOD"]=== "POST"){
                 <input type="submit" value="Pridať">
             </form>
         </section>
+        <section class="home">
+            <br>
+            <a href="ziaci.php">Späť na zoznam žiakov</a>
+        </section>
+        
     </main>
     <?php require "assets/footer.php"; ?>
 </body>

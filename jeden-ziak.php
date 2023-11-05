@@ -1,5 +1,7 @@
 <?php 
         require "assets/database.php";
+
+        $connection = connectionDB();
         
         if (isset($_GET["id"]) and is_numeric($_GET["id"])){
         $sql = "SELECT * 
