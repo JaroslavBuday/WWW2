@@ -1,9 +1,8 @@
 <?php 
+require "assets/database.php";
 
 if ($_SERVER["REQUEST_METHOD"]=== "POST"){  
 
-    require "assets/database.php";
-      
     $sql = "INSERT INTO student (first_name, second_name, age, life, college)
         VALUES (?,?,?,?,?)";  
 
@@ -42,11 +41,11 @@ if ($_SERVER["REQUEST_METHOD"]=== "POST"){
     <main>
         <section class="add-form">
             <form action="add-student.php" method="post">
-                <input type="text" placeholder="Meno" name="first_name" id=""><br>
-                <input type="text" placeholder="Priezvisko" name="second_name" id=""><br>
-                <input type="number" placeholder="Vek" min="6" name="age" id=""><br>
+                <input type="text" placeholder="Meno" name="first_name" id="" required><br>
+                <input type="text" placeholder="Priezvisko" name="second_name" id="" required><br>
+                <input type="number" placeholder="Vek" min="6" name="age" id="" required><br>
                 <textarea name="life" placeholder="Podrobnosti o žiakovi" ></textarea><br>
-                <input type="text" placeholder="Fakulta" name="college" id="">
+                <input type="text" placeholder="Fakulta" name="college" id="" required>
                 <input type="submit" value="Pridať">
             </form>
         </section>
