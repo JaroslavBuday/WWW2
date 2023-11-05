@@ -1,3 +1,5 @@
+<!-- cvicny subor -->
+
 <?php
 /**
  * Popis studenta
