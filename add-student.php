@@ -9,20 +9,21 @@ if ($_SERVER["REQUEST_METHOD"]=== "POST"){
         
         $statement = mysqli_prepare($connection, $sql);
 
-        mysqli_stmt_bind_param($statement,"ssiss", $_POST["first_name"], $_POST["second_name"],$_POST["age"], $_POST["life"],$_POST["college"]);
+        if ($statement === false) {
+            echo mysqli_error($connection);
+        } else {
+            mysqli_stmt_bind_param($statement,"ssiss", $_POST["first_name"], $_POST["second_name"],$_POST["age"], $_POST["life"],$_POST["college"]);
 
-        mysqli_stmt_execute($statement);
-    
-
-    // $result = mysqli_query($connection, $sql);
-
-    // if($result === false){
-    //     mysqli_error($connection);
-    // } else {
-    //     $id = mysqli_insert_id($connection);
-    //     echo "Úspešne vložené, ID žiaka: $id";
-    // }
+            if(mysqli_stmt_execute($statement)){
+                $id = mysqli_insert_id($connection);
+                echo "Úspešne vložené, ID žiaka: $id";
+            } else {
+                echo mysqli_stmt_error($statement);  
+            }
+        }
 }
+
+
 ?>
 
 
