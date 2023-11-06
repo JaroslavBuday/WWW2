@@ -35,6 +35,9 @@
                 <p>Fakulta: <?= htmlspecialchars($students["college"])?> </p>
             <?php endif ?>
         </section>
+        <section class="buttons">
+            <a href="editacia-ziaka.php?id=<?= $students['id']?>">Editovať</a>
+        </section>
         
     </main>
     
