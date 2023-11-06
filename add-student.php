@@ -29,7 +29,9 @@ if ($_SERVER["REQUEST_METHOD"]=== "POST"){
 
             if(mysqli_stmt_execute($statement)){
                 $id = mysqli_insert_id($connection);
-                echo "Úspešne vložené, ID žiaka: $id";
+                // echo "Úspešne vložené, ID žiaka: $id";
+
+                header("location: jeden-ziak.php?id=$id");
             } else {
                 echo mysqli_stmt_error($statement);  
             }
