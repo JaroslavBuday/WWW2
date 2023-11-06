@@ -44,7 +44,7 @@
                 <ul>
                     <?php foreach($students as $one_student): ?>
                         <li>
-                            <?php echo $one_student["first_name"]. " ".$one_student["second_name"] ?>
+                            <?php echo htmlspecialchars($one_student["first_name"]). " ".htmlspecialchars($one_student["second_name"]) ?>
                         </li>
                         <a href="jeden-ziak.php?id=<?= $one_student['id']?> ">Viac informácií</a>
                     <?php endforeach; ?>
