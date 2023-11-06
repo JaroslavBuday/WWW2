@@ -1,3 +1,18 @@
+<?php
+    require "assets/database.php";
+    require "assets/ziak.php";
+
+    $connection = connectionDB();
+
+    if (isset($_GET["id"]) and is_numeric($_GET["id"])){
+        $one_student = getStudent($connection, $_GET["id"]);
+    } else {
+        $one_student = null;
+    }
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
