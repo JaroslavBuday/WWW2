@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"]=== "POST"){
                         value="<?= $second_name ?>"  
                         required>
                 <br>
-                <input  type="number" 
+                <input  type="number"                                 
                         placeholder="Vek" 
                         min="6" 
                         name="age" 
@@ -74,8 +74,7 @@ if ($_SERVER["REQUEST_METHOD"]=== "POST"){
                 <br>
                 <textarea   name="life" 
                             placeholder="Podrobnosti o žiakovi" 
-                            required><?= $life ?>
-                </textarea>
+                            required><?= $life ?></textarea>
                 <br>
                 <input  type="text" 
                         placeholder="Fakulta" 
