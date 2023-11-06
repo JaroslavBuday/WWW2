@@ -12,7 +12,11 @@
             <h1>Škola čar a kúziel v bradaviciach</h1>
         </section>
         <section>
-            <a href="ziaci.php">Zoznam žiakov</a>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error dignissimos repellat optio provident ea totam, velit cumque temporibus qui. Consequatur beatae cupiditate magni rem, quae atque at adipisci reprehenderit perferendis.
+            Atque aspernatur quis corrupti repellat voluptatibus nam numquam fuga velit est! Animi pariatur, necessitatibus temporibus, corporis quam esse ex soluta perspiciatis iste reiciendis natus optio similique molestiae unde in corrupti?
+
+            </p>
+            
         </section>
 
     </main>

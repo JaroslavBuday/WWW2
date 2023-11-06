@@ -33,7 +33,7 @@
             <h1>Informácie o žiakovi</h1>
         </section>
         <section>
-            <a href="ziaci.php">Zoznam žiakov</a>
+            
             <?php if ($students === null): ?>
                 <p>Žiak nefiguruje v databáze</p>
             <?php else: ?>

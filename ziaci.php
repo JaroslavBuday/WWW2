@@ -36,8 +36,6 @@
             <h1>Zoznam žiakov školy</h1>
         </section>
         <section class="students-list">
-            <a href="index.php">Úvodná strana</a>
-            <a href="add-student.php">Pridať nového žiaka</a>
             <?php if(empty($students)):    ?>
                 <p>Žiadny žiaci v databáze</p>
             <?php else:  ?>

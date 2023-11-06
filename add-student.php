@@ -99,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"]=== "POST"){
         </section>
         <section class="home">
             <br>
-            <a href="ziaci.php">Späť na zoznam žiakov</a>
+            
         </section>
         
     </main>
