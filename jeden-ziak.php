@@ -1,22 +1,14 @@
 <?php 
         require "assets/database.php";
+        require "assets/ziak.php";
 
         $connection = connectionDB();
         
         if (isset($_GET["id"]) and is_numeric($_GET["id"])){
-        $sql = "SELECT * 
-                FROM student
-                WHERE id = ".$_GET["id"];
-        
-         $result = mysqli_query($connection, $sql); 
+            $students = getStudent($connection, $_GET["id"]);
+        }
             
-         if ($result === false) {
-            echo mysqli_error($connection);
-        } else {
-            $students = mysqli_fetch_assoc($result);
-        }}
-            
-        // var_dump($students);
+         
 ?>
 
 <!DOCTYPE html>
