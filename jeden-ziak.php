@@ -37,10 +37,10 @@
             <?php if ($students === null): ?>
                 <p>Žiak nefiguruje v databáze</p>
             <?php else: ?>
-                <h2><?= $students["first_name"]." ".$students["second_name"]  ?></h2>
-                <p>Vek: <?= $students["age"]?> </p>
-                <p>Dodatočné informácie: <?= $students["life"]?> </p>
-                <p>Fakulta: <?= $students["college"]?> </p>
+                <h2><?= htmlspecialchars($students["first_name"])." ".htmlspecialchars($students["second_name"])  ?></h2>
+                <p>Vek: <?= htmlspecialchars($students["age"])?> </p>
+                <p>Dodatočné informácie: <?= htmlspecialchars($students["life"])?> </p>
+                <p>Fakulta: <?= htmlspecialchars($students["college"])?> </p>
             <?php endif ?>
         </section>
         
