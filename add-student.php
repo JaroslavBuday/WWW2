@@ -31,7 +31,16 @@ if ($_SERVER["REQUEST_METHOD"]=== "POST"){
                 $id = mysqli_insert_id($connection);
                 // echo "Úspešne vložené, ID žiaka: $id";
 
-                header("location: jeden-ziak.php?id=$id");
+                if (isset($_SERVER["HTTPS"]) and $_SERVER["HTTPS"] != "off"){
+                    $url_protocol = "https";
+                } else {
+                    $url_protocol = "http";
+                }
+                // localhost = $_SERVER["HTTP_HOST"]
+
+                // header("location: jeden-ziak.php?id=$id"); //relativna cesta 
+                header("location: $url_protocol://" . $_SERVER["HTTP_HOST"] . "/www2.database/jeden-ziak.php?id=$id"); // - absolutna cesta
+
             } else {
                 echo mysqli_stmt_error($statement);  
             }
