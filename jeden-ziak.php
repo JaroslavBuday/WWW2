@@ -37,6 +37,7 @@
         </section>
         <section class="buttons">
             <a href="editacia-ziaka.php?id=<?= $students['id']?>">Editovať</a>
+            <a href="delete-student.php?id=<?= $students['id']?>">Zmazať</a>
         </section>
         
     </main>

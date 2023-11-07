@@ -66,3 +66,30 @@ function updateStudent($connection, $first_name, $second_name, $age, $life, $col
         }
     }
 }
+
+/**
+ * Vymaze ziaka z databazy
+ * 
+ * @param object $connection - napojenie na databazu
+ * @param integer $id - id ziaka
+ * 
+ * @return void
+ */
+
+function deleteStudent($connection, $id){
+    $sql = "DELETE 
+            FROM student        
+            WHERE id = ?"; 
+        
+    $stmt = mysqli_prepare($connection, $sql);
+
+    if(!$stmt){
+        echo mysqli_error($connection);
+    } else {
+        mysqli_stmt_bind_param($stmt,"i", $id);
+
+        if (mysqli_stmt_execute($stmt)){
+            redirectUrl("/www2.database/ziaci.php");
+        }
+    }
+}
