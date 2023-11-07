@@ -6,7 +6,7 @@
     //NASTAVENIE SQL DOTAZU
         $sql = "SELECT * 
                 FROM student
-                ORDER BY first_name ASC";
+                ORDER BY id ASC";
             // echo "<br>";
 
     // ODOSLANIE DOTAZU DO DATABAZY-VRATI OBJEKT
