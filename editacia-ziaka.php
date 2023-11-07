@@ -13,6 +13,7 @@
             $age = $one_student["age"];
             $life = $one_student["life"];
             $college = $one_student["college"];
+            $id = $one_student["id"];
         } else {
             die("Študent sa nenachádza v databáze !!!");
         }
@@ -22,6 +23,33 @@
         die("ID nezadané !!!");
     }
 
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $first_name = $_POST["first_name"];
+            $second_name = $_POST["second_name"];
+            $age = $_POST["age"];
+            $life = $_POST["life"];
+            $college = $_POST["college"];
+
+            $sql = "UPDATE student 
+                    SET first_name = ?,
+                        second_name= ?,
+                        age= ?,
+                        life= ?,
+                        college= ? 
+            WHERE id = ?";
+
+            $stmt = mysqli_prepare($connection, $sql);
+
+                if($stmt === false){
+                    echo mysqli_error($connection);
+                } else {
+                    mysqli_stmt_bind_param($stmt,"ssissi", $first_name, $second_name, $age, $life, $college, $id);
+
+                    if(mysqli_stmt_execute($stmt)){
+                        echo "Údaje boli upravené";
+                    }
+                }
+    }
 
 ?>
 
