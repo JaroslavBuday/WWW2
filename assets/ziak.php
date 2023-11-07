@@ -57,7 +57,19 @@ function updateStudent($connection, $first_name, $second_name, $age, $life, $col
         mysqli_stmt_bind_param($stmt,"ssissi", $first_name, $second_name, $age, $life, $college, $id);
 
         if(mysqli_stmt_execute($stmt)){
-            echo "Údaje boli upravené";
+            // echo "Údaje boli upravené";
+
+            if (isset($_SERVER["HTTPS"]) and $_SERVER["HTTPS"] != "off"){
+                $url_protocol = "https";
+            } else {
+                $url_protocol = "http";
+            }
+            // localhost = $_SERVER["HTTP_HOST"]
+
+            // header("location: jeden-ziak.php?id=$id"); //relativna cesta 
+            header("location: $url_protocol://" . $_SERVER["HTTP_HOST"] . "/www2.database/jeden-ziak.php?id=$id"); // - absolutna cesta
+
+    
         }
     }
 }
