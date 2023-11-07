@@ -26,3 +26,38 @@ function getStudent($connection, $id){
         } 
     }
 }
+
+/**
+ * Updatuje informacie ziaka v databaze
+ * 
+ * @param object $connection - napojenie na databazu
+ * @param string $first_name - meno
+ * @param string $second_name - priezvisko
+ * @param integer $age - vek
+ * @param string $life - informacie o ziakovi
+ * @param string $college - fakulta
+ * @param integer $id - id ziaka
+ * 
+ * @return void - nevracia ziadnu hodnotu
+ */
+function updateStudent($connection, $first_name, $second_name, $age, $life, $college, $id){
+    $sql = "UPDATE student 
+                    SET first_name = ?,
+                        second_name= ?,
+                        age= ?,
+                        life= ?,
+                        college= ? 
+            WHERE id = ?";
+
+    $stmt = mysqli_prepare($connection, $sql);
+
+    if(!$stmt){
+        echo mysqli_error($connection);
+    } else {
+        mysqli_stmt_bind_param($stmt,"ssissi", $first_name, $second_name, $age, $life, $college, $id);
+
+        if(mysqli_stmt_execute($stmt)){
+            echo "Údaje boli upravené";
+        }
+    }
+}
