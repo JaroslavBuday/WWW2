@@ -1,3 +1,9 @@
+<!-- pri praci s databazou musis splnit tieto funkcie
+    C - create
+    R - read
+    U - update
+    D - delete
+ -->
 <!DOCTYPE html>
 <html lang="sk-SK">
 <head>
