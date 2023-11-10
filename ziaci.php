@@ -1,23 +1,10 @@
 <?php 
     require "assets/database.php";
+    require "assets/ziak.php";
 
     $connection = connectionDB();
 
-    //NASTAVENIE SQL DOTAZU
-        $sql = "SELECT * 
-                FROM student
-                ORDER BY id ASC";
-            // echo "<br>";
-
-    // ODOSLANIE DOTAZU DO DATABAZY-VRATI OBJEKT
-        $result = mysqli_query($connection, $sql); 
-            // var_dump($result);
-            // echo "<br>";
-            // echo "<br>";
-
-    // PREHODIM SI OBJEKT NA ASOCIATIVNE POLE
-        $students = mysqli_fetch_all($result, MYSQLI_ASSOC); 
-        // var_dump($students);
+    $students = getAllStudents($connection);
 
 
 ?>

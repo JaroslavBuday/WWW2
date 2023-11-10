@@ -93,3 +93,30 @@ function deleteStudent($connection, $id){
         }
     }
 }
+
+/**
+ * Vrati ziakov z databazy
+ * 
+ * @param object $connection - pripojenie do databazy
+ *  
+ * @return array pole objektov kde kazde pole je jeden ziak
+ * */
+
+ function getAllStudents( $connection){
+    //NASTAVENIE SQL DOTAZU
+        $sql = "SELECT * 
+        FROM student";
+
+    // ODOSLANIE DOTAZU DO DATABAZY-VRATI OBJEKT
+        $result = mysqli_query($connection, $sql); 
+
+    // PREHODIM SI OBJEKT NA ASOCIATIVNE POLE
+    if (!$result){
+        echo mysqli_error($connection);
+    } else {
+        $students = mysqli_fetch_all($result, MYSQLI_ASSOC); 
+        return $students;
+    }
+}
+    
+    
