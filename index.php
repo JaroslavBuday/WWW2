@@ -15,7 +15,7 @@
     <?php require "assets/header.php"; ?>
     <main>
         <section class="main-heading">
-            <h1>Škola čar a kúziel v bradaviciach</h1>
+            <h1>Škola čar a kúziel v Bradaviciach</h1>
         </section>
         <section>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error dignissimos repellat optio provident ea totam, velit cumque temporibus qui. Consequatur beatae cupiditate magni rem, quae atque at adipisci reprehenderit perferendis.
