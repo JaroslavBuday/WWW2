@@ -1,6 +1,7 @@
 <?php 
 require "assets/database.php";
-require "assets/url.php";
+// require "assets/url.php";
+require "assets/ziak.php";
 
 $first_name = null;
 $second_name = null;
@@ -16,27 +17,9 @@ if ($_SERVER["REQUEST_METHOD"]=== "POST"){
     $life = $_POST["life"];
     $college = $_POST["college"];
 
-    $sql = "INSERT INTO student (first_name, second_name, age, life, college)
-        VALUES (?,?,?,?,?)";  
+    $connection = connectionDB();
 
-        $connection = connectionDB();
-        
-        $statement = mysqli_prepare($connection, $sql);
-
-        if ($statement === false) {
-            echo mysqli_error($connection);
-        } else {
-            mysqli_stmt_bind_param($statement,"ssiss", $_POST["first_name"], $_POST["second_name"],$_POST["age"], $_POST["life"],$_POST["college"]);
-
-            if(mysqli_stmt_execute($statement)){
-                $id = mysqli_insert_id($connection);
-                
-
-            redirectUrl("/www2.database/jeden-ziak.php?id=$id");
-            } else {
-                echo mysqli_stmt_error($statement);  
-            }
-        }
+    createStudent($connection, $first_name, $second_name, $age, $life, $college);
 }
 
 

@@ -102,7 +102,7 @@ function deleteStudent($connection, $id){
  * @return array pole objektov kde kazde pole je jeden ziak
  * */
 
- function getAllStudents( $connection){
+ function getAllStudents(object $connection){
     //NASTAVENIE SQL DOTAZU
         $sql = "SELECT * 
         FROM student";
@@ -119,4 +119,36 @@ function deleteStudent($connection, $id){
     }
 }
     
-    
+/**
+ * Prida ziaka do databazy a presmeruje nas na profil ziaka
+ * 
+ * @param object $connection - napojenie na databazu
+ * @param string $first_name - meno
+ * @param string $second_name - priezvisko
+ * @param integer $age - vek
+ * @param string $life - informacie o ziakovi
+ * @param string $college - fakulta
+ * 
+ * @return void
+ */
+function createStudent($connection, $first_name, $second_name, $age, $life, $college){
+    $sql = "INSERT INTO student (first_name, second_name, age, life, college)
+        VALUES (?,?,?,?,?)";  
+
+        $statement = mysqli_prepare($connection, $sql);
+
+        if (!$statement) {
+            echo mysqli_error($connection);
+        } else {
+            mysqli_stmt_bind_param($statement,"ssiss", $first_name, $second_name,$age, $life,$college);
+
+            if(mysqli_stmt_execute($statement)){
+                $id = mysqli_insert_id($connection);
+                
+
+            redirectUrl("/www2.database/jeden-ziak.php?id=$id");
+            } else {
+                echo mysqli_stmt_error($statement);  
+            }
+        }
+}
