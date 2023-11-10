@@ -10,10 +10,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/header.css">
+    <script src="https://kit.fontawesome.com/81e746884d.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <body>
     <?php require "assets/header.php"; ?>
+
+    <i class="fa-solid fa-burger fa-bounce"></i>
+    <i class="fa-regular fa-circle-xmark fa-fade"></i>
     <main>
         <section class="main-heading">
             <h1>Škola čar a kúziel v Bradaviciach</h1>
