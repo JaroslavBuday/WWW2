@@ -10,7 +10,7 @@
         </ul>
     </nav>
     <div class="menu-icon">
-    <i class="fa-solid fa-burger fa-bounce"></i>
-    <!-- <i class="fa-regular fa-circle-xmark fa-fade"></i> -->
+    <i class="fa-solid fa-bars"></i>
+    
     </div>
 </header>
