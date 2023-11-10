@@ -16,8 +16,7 @@
 <body>
     <?php require "assets/header.php"; ?>
 
-    <i class="fa-solid fa-burger fa-bounce"></i>
-    <i class="fa-regular fa-circle-xmark fa-fade"></i>
+   
     <main>
         <section class="main-heading">
             <h1>Škola čar a kúziel v Bradaviciach</h1>
