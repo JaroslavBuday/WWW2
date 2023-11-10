@@ -11,8 +11,8 @@ require "url.php";
  * @return mixed  asociativne pole ktore obsahuje info o jednom konkretnom ziakovi alebo vrati null pokial nenajde ziadneho ziaka
  * 
  */
-function getStudent($connection, $id){
-    $sql = "SELECT * 
+function getStudent($connection, $id, $columns = "*"){
+    $sql = "SELECT $columns 
             FROM student
             WHERE id = ?";     
             
@@ -97,22 +97,22 @@ function deleteStudent($connection, $id){
 /**
  * Vrati ziakov z databazy
  * 
- * @param object $connection - pripojenie do databazy
+ * @param object $conn - pripojenie do databazy
  *  
  * @return array pole objektov kde kazde pole je jeden ziak
  * */
 
- function getAllStudents(object $connection){
+ function getAllStudents(object $conn, $columns = "*"){
     //NASTAVENIE SQL DOTAZU
-        $sql = "SELECT * 
+        $sql = "SELECT $columns 
         FROM student";
 
     // ODOSLANIE DOTAZU DO DATABAZY-VRATI OBJEKT
-        $result = mysqli_query($connection, $sql); 
+        $result = mysqli_query($conn, $sql); 
 
     // PREHODIM SI OBJEKT NA ASOCIATIVNE POLE
     if (!$result){
-        echo mysqli_error($connection);
+        echo mysqli_error($conn);
     } else {
         $students = mysqli_fetch_all($result, MYSQLI_ASSOC); 
         return $students;

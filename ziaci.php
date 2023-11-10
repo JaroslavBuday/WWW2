@@ -4,7 +4,7 @@
 
     $connection = connectionDB();
 
-    $students = getAllStudents($connection);
+    $students = getAllStudents($connection, "id, first_name, second_name");
 
 
 ?>
