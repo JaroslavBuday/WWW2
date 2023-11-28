@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./css/general.css">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./query/header-query.css">
+    <link rel="stylesheet" href="./css/index.css">
     <script src="https://kit.fontawesome.com/81e746884d.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
@@ -21,15 +22,11 @@
    
     <main>
         <section class="main-heading">
-            <h1>Škola čar a kúziel v Bradaviciach</h1>
+            <img src="./img/hogwarts-logo.png" alt="Bradavice logo">
+            <h1>Škola čar a kúziel</h1>
+            <h2>Bradavice</h2>
         </section>
-        <section>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error dignissimos repellat optio provident ea totam, velit cumque temporibus qui. Consequatur beatae cupiditate magni rem, quae atque at adipisci reprehenderit perferendis.
-            Atque aspernatur quis corrupti repellat voluptatibus nam numquam fuga velit est! Animi pariatur, necessitatibus temporibus, corporis quam esse ex soluta perspiciatis iste reiciendis natus optio similique molestiae unde in corrupti?
-
-            </p>
-            
-        </section>
+        
 
     </main>
     <?php require "assets/footer.php"; ?>
