@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="./query/header-query.css">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./query/index-query.css">
+    <link rel="stylesheet" href="./css/footer.css">
     <script src="https://kit.fontawesome.com/81e746884d.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>

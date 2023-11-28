@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="./css/general.css">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./query/header-query.css">
+    <link rel="stylesheet" href="./css/footer.css">
     <script src="https://kit.fontawesome.com/81e746884d.js" crossorigin="anonymous"></script>
     <title>Zmazať žiaka</title>
 </head>
