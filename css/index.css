@@ -1,3 +1,7 @@
+/************
+    main  
+************/
+
 main {
     height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, 0.799),rgba(0, 0, 0, 0.629)),url(../img/background.webp);
@@ -19,17 +23,76 @@ main {
 .main-heading img {
     width: 200px;
     margin-bottom: 20px;
+    animation: fromTop 3s linear;
 }
 
 .main-heading h1 {
     color: white;
     font-size: 50px;
     letter-spacing: 2px;
-
+    animation: reveal 3s linear;
 }
 
 .main-heading h2 {
     color: white;
     font-size: 40px;
     letter-spacing: 1px;
+    animation: fromBottom 3s linear;
+}
+
+/************
+  Keyframes  
+************/
+
+@keyframes reveal {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fromTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-90px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fromBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(+90px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-90px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fromRight {
+    0% {
+        opacity: 0;
+        transform: translateX(+90px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
