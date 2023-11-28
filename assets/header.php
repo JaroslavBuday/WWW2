@@ -1,8 +1,9 @@
 <header>
     <div class="logo">
-        <img src="./img/hogwarts-logo.png" alt="">
+        <a href="index.php"><img src="./img/hogwarts-logo.png" alt=""></a>
+        
     </div>
-    <nav>
+    <nav class="navMenu">
         <ul>
             <li><a href="index.php">Úvodná strana</a></li>
             <li><a href="ziaci.php">Zoznam žiakov</a></li>
