@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./query/header-query.css">
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./query/index-query.css">
     <script src="https://kit.fontawesome.com/81e746884d.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
@@ -23,7 +24,7 @@
     <main>
         <section class="main-heading">
             <img src="./img/hogwarts-logo.png" alt="Bradavice logo">
-            <h1>Škola čar a kúziel</h1>
+            <h1>Škola čar a&nbsp;kúziel</h1>
             <h2>Bradavice</h2>
         </section>
         
