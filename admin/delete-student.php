@@ -1,6 +1,6 @@
 <?php
-    require "assets/database.php";
-    require "assets/ziak.php";
+    require "../assets/database.php";
+    require "../assets/ziak.php";
 
     $conn = connectionDB();
 
@@ -15,10 +15,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/general.css">
-    <link rel="stylesheet" href="./css/header.css">
-    <link rel="stylesheet" href="./query/header-query.css">
-    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../query/header-query.css">
+    <link rel="stylesheet" href="../css/footer.css">
     <script src="https://kit.fontawesome.com/81e746884d.js" crossorigin="anonymous"></script>
     <title>Zmazať žiaka</title>
 </head>
@@ -32,11 +32,11 @@
                 <a href="jeden-ziak.php?id=<?=$_GET['id'] ?>">Zrušiť</a>
             </form>
         </section>
-        <?php require "assets/footer.php"?>
+        <?php require "../assets/footer.php"?>
     </main>
     
     
-    <script src="./js/header.js"></script>
+    <script src="../js/header.js"></script>
 </body>
 </html>
 

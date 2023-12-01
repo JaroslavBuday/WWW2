@@ -1,7 +1,7 @@
 <?php 
-require "assets/database.php";
+require "../assets/database.php";
 // require "assets/url.php";
-require "assets/ziak.php";
+require "../assets/ziak.php";
 
 $first_name = null;
 $second_name = null;
@@ -31,10 +31,10 @@ if ($_SERVER["REQUEST_METHOD"]=== "POST"){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/general.css">
-    <link rel="stylesheet" href="./css/header.css">
-    <link rel="stylesheet" href="./query/header-query.css">
-    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../query/header-query.css">
+    <link rel="stylesheet" href="../css/footer.css">
     <script src="https://kit.fontawesome.com/81e746884d.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"]=== "POST"){
     
     <main>
         <section class="add-form">
-            <?php require "assets/formular-ziak.php"; ?>
+            <?php require "../assets/formular-ziak.php"; ?>
         </section>
         <section class="home">
             <br>
@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"]=== "POST"){
         </section>
         
     </main>
-    <?php require "assets/footer.php"; ?>
-    <script src="./js/header.js"></script>
+    <?php require "../assets/footer.php"; ?>
+    <script src="../js/header.js"></script>
 </body>
 </html>
