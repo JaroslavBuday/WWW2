@@ -61,7 +61,7 @@ function updateStudent($connection, $first_name, $second_name, $age, $life, $col
 
         if(mysqli_stmt_execute($stmt)){
 
-            redirectUrl("/www2.database/jeden-ziak.php?id=$id");
+            redirectUrl("/www2.database/admin/jeden-ziak.php?id=$id");
            
         }
     }
@@ -89,7 +89,7 @@ function deleteStudent($connection, $id){
         mysqli_stmt_bind_param($stmt,"i", $id);
 
         if (mysqli_stmt_execute($stmt)){
-            redirectUrl("/www2.database/ziaci.php");
+            redirectUrl("/www2.database/admin/ziaci.php");
         }
     }
 }
@@ -146,7 +146,7 @@ function createStudent($connection, $first_name, $second_name, $age, $life, $col
                 $id = mysqli_insert_id($connection);
                 
 
-            redirectUrl("/www2.database/jeden-ziak.php?id=$id");
+            redirectUrl("/www2.database/admin/jeden-ziak.php?id=$id");
             } else {
                 echo mysqli_stmt_error($statement);  
             }
