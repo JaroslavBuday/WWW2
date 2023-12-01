@@ -6,6 +6,7 @@
     <nav class="navMenu">
         <ul>
             <li><a href="index.php">Úvodná strana</a></li>
+           <li><a href="registration-form.php">Registrácia</a></li>
            
         </ul>
     </nav>
