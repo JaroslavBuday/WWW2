@@ -23,7 +23,7 @@
     <title>Zmazať žiaka</title>
 </head>
 <body>
-    <?php require "assets/header.php"?>
+    <?php require "../assets/admin-header.php"?>
     <main>
         <section class="delete-form">
             <form method="POST">
