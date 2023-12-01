@@ -2,6 +2,7 @@
 
 require "../assets/url.php";
 require "../assets/database.php";
+require "../assets/user.php";
 
 session_start();
 
@@ -19,6 +20,12 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     // Plain text = Admin123
     // Hash = fggafg56a5f56ga5fg5a6sffga6f5g6a6dff5g
 
+    $id = createUser($connection, $first_name, $second_name, $email, $password);
+
+    if(empty($id)){
+        echo " Užívatela sa nepodarilo zaregistrovať";
+    } else {
+        redirectUrl("/www2.database/admin/ziaci.php");
+    }
     
-    var_dump($password);
 }
