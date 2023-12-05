@@ -22,13 +22,18 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
     $id = createUser($connection, $first_name, $second_name, $email, $password);
 
-    if(empty($id)){
+    if(!empty($id)){
         // zabranuje vykonaniu tzv. fixation atack. viac tu https://owasp.org/www-community/attacks/Session_fixation
         session_regenerate_id(true);
 
-        echo " Užívatela sa nepodarilo zaregistrovať";
+        // nastavenie ze je uzivatel prihlaseny
+        $_SESSION["is_logged_in"] = true;
+        // nastavenie ID uzivatela
+        $_SESSION["logged_in_user_id"] = $id;
+
+        redirectUrl("/www2.database/admin/ziaci.php");        
     } else {
-        redirectUrl("/www2.database/admin/ziaci.php");
+        echo " Užívatela sa nepodarilo zaregistrovať";
     }
     
 }
