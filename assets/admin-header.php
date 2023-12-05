@@ -8,6 +8,7 @@
         <ul>
             <li><a href="./ziaci.php">Zoznam žiakov</a></li>
             <li><a href="./add-student.php">Pridať žiaka</a></li>
+            <li><a href="./log-out.php">Odhlásiť</a></li>
         </ul>
     </nav>
     <div class="menu-icon">
