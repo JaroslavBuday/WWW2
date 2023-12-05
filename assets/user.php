@@ -49,14 +49,20 @@ function authentification($connection, $log_email, $log_password){
 
         if(mysqli_stmt_execute($stmt)){
             $result = mysqli_stmt_get_result($stmt);
-            $password_database = mysqli_fetch_row($result); // tu je v premennej pole
-            $user_password_database = $password_database[0]; // tu je v premennej string
 
-            if($user_password_database){
-                return password_verify($log_password, $user_password_database);
-                // vzdy prve dat zadane heslo az potom heslo hashovane z databazy!
-                // pokial to sedi vrati sa true
+            if($result->num_rows != 0){
+                $password_database = mysqli_fetch_row($result); // tu je v premennej pole
+                $user_password_database = $password_database[0]; // tu je v premennej string
+
+                if($user_password_database){
+                    return password_verify($log_password, $user_password_database);
+                    // vzdy prve dat zadane heslo az potom heslo hashovane z databazy!
+                    // pokial to sedi vrati sa true
+                }
+            } else {
+                echo "Nesprávny email";
             }
+                
         }
     } else {
         echo mysqli_error($connection);

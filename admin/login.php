@@ -24,6 +24,23 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
         redirectUrl("/www2.database/ziaci.php");
     } else {
-        // neúspešné prihlásenie
+        $error = "Chyba pri prihlásení";
     }
 }
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <?php if(!empty($error)): ?>
+        <p><?= $error ?></p>
+        <a href="../signin.php">Vrátiť sa späť</a>
+    <?php endif; ?>
+    
+</body>
+</html>
