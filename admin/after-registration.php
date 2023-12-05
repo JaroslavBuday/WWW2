@@ -23,6 +23,9 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     $id = createUser($connection, $first_name, $second_name, $email, $password);
 
     if(empty($id)){
+        // zabranuje vykonaniu tzv. fixation atack. viac tu https://owasp.org/www-community/attacks/Session_fixation
+        session_regenerate_id(true);
+
         echo " Užívatela sa nepodarilo zaregistrovať";
     } else {
         redirectUrl("/www2.database/admin/ziaci.php");
