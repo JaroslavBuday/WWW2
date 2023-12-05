@@ -29,9 +29,13 @@ function createUser($connection, $first_name, $second_name, $email, $password){
 }
 
 /**
+ * Overenie uzivatela podla emailu a hesla
  * 
+ * @param object $connection - pripojenie do databazy
+ * @param string $log_email - email z formulara pre prihlasenie
+ * @param string $log_password - heslo z formulara pre prihlasenie
  * 
- * 
+ * @return boolean true - ak je prihlasenie uspesne, false - ak je neuspesne
  */
 function authentification($connection, $log_email, $log_password){
     $sql = "SELECT password
@@ -45,8 +49,8 @@ function authentification($connection, $log_email, $log_password){
 
         if(mysqli_stmt_execute($stmt)){
             $result = mysqli_stmt_get_result($stmt);
-            $password_database = mysqli_fetch_row($result);
-            $user_password_database = $password_database[0];
+            $password_database = mysqli_fetch_row($result); // tu je v premennej pole
+            $user_password_database = $password_database[0]; // tu je v premennej string
 
             if($user_password_database){
                 return password_verify($log_password, $user_password_database);
@@ -58,3 +62,31 @@ function authentification($connection, $log_email, $log_password){
         echo mysqli_error($connection);
     }
 }
+
+/**
+ * Ziskanie ID uzivatela
+ * 
+ * @param object $connection - pripojenie do databazy
+ * @param string $email - email uzivatela
+ * 
+ * @return int id uzivatela
+ */
+ function getUserId($connection, $email){
+    $sql = "SELECT id FROM user
+            WHERE email = ?";
+
+    $stmt = mysqli_prepare($connection, $sql);
+
+    if($stmt){
+        mysqli_stmt_bind_param($stmt, "s", $email);
+        if(mysqli_stmt_execute($stmt)){
+            $result = mysqli_stmt_get_result($stmt);
+            $id_database = mysqli_fetch_row($result); // pole
+            $user_id = $id_database[0];
+
+            return $user_id;
+        }
+    } else {
+        echo mysqli_error($connection);
+    }
+ }

@@ -11,7 +11,9 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     $log_password = $_POST["login-password"];
 
     if(authentification($conn, $log_email, $log_password)){
-        // úspešné prihlásenie
+        // získanie ID užívatela
+        $id = getUserId($conn, $log_email);
+        echo $id;
     } else {
         // neúspešné prihlásenie
     }
