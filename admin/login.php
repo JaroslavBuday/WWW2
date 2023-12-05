@@ -13,7 +13,16 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     if(authentification($conn, $log_email, $log_password)){
         // získanie ID užívatela
         $id = getUserId($conn, $log_email);
-        echo $id;
+
+        session_regenerate_id(true);
+
+        // nastavenie ze je uzivatel prihlaseny
+        $_SESSION["is_logged_in"] = true;
+        // nastavenie ID uzivatela
+        $_SESSION["logged_in_user_id"] = $id;
+        
+
+        redirectUrl("/www2.database/ziaci.php");
     } else {
         // neúspešné prihlásenie
     }
