@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./query/header-query.css">
     <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/registration-form.css">
     <script src="https://kit.fontawesome.com/81e746884d.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
@@ -15,13 +16,14 @@
 
     <main>
         <section class="registration-form">
+            <h1>Registrácia</h1>
             <form action="./admin/after-registration.php" method="post">
-                <input type="text" name="first-name" placeholder="Meno" id=""><br>
-                <input type="text" name="second-name" placeholder="Priezvisko" id=""><br>
-                <input type="email" name="email" placeholder="Email" id=""><br>
-                <input type="password" name="password" placeholder="Heslo" id=""><br>
-                <input type="password" name="password-again" placeholder="Heslo znovu" id=""><br>
-                <input type="submit" value="Zaregistrovať">
+                <input class="reg-input" type="text" name="first-name" placeholder="Meno" ><br>
+                <input class="reg-input" type="text" name="second-name" placeholder="Priezvisko" ><br>
+                <input class="reg-input" type="email" name="email" placeholder="Email" ><br>
+                <input class="reg-input" type="password" name="password" placeholder="Heslo" ><br>
+                <input class="reg-input" type="password" name="password-again" placeholder="Heslo znovu" ><br>
+                <input type="submit" value="Zaregistrovať"id="btn">
             </form>
         </section>
 

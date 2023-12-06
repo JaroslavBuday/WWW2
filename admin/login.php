@@ -39,6 +39,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 <body>
     <?php if(!empty($error)): ?>
         <p><?= $error ?></p>
+        <img src="../img/chyba.jpg" alt="error">
         <a href="../signin.php">Vrátiť sa späť</a>
     <?php endif; ?>
     

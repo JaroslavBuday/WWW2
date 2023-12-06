@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="./css/general.css">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./query/header-query.css">
-    
+    <link rel="stylesheet" href="./css/signin.css">
     <link rel="stylesheet" href="./css/footer.css">
     <script src="https://kit.fontawesome.com/81e746884d.js" crossorigin="anonymous"></script>
     <title>Document</title>
@@ -19,9 +19,9 @@
         <section class="form">
             <h1>Prihlásenie</h1>
             <form action="admin/login.php" method="post">
-                <input type="email" name="login-email" id=""><br>
-                <input type="password" name="login-password" id=""><br>
-                <input type="submit" value="Prihlásiť">
+                <input type="email" name="login-email" placeholder="Email" id="email"><br>
+                <input type="password" name="login-password" placeholder="Heslo" id="password"><br>
+                <input type="submit" value="Prihlásiť" id="btn">
             </form>
         </section>
         
