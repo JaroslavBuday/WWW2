@@ -21,8 +21,9 @@
                 <input class="reg-input" type="text" name="first-name" placeholder="Meno" ><br>
                 <input class="reg-input" type="text" name="second-name" placeholder="Priezvisko" ><br>
                 <input class="reg-input" type="email" name="email" placeholder="Email" ><br>
-                <input class="reg-input" type="password" name="password" placeholder="Heslo" ><br>
-                <input class="reg-input" type="password" name="password-again" placeholder="Heslo znovu" ><br>
+                <input class="reg-input pass-first" type="password" name="password" placeholder="Heslo" ><br>
+                <input class="reg-input pass-second" type="password" name="password-again" placeholder="Heslo znovu" ><br>
+                <p class="result-text"></p>
                 <input type="submit" value="Zaregistrovať"id="btn">
             </form>
         </section>
@@ -31,5 +32,6 @@
 
     <?php require "assets/footer.php"; ?>
     <script src="./js/header.js"></script>
+    <script src="./js/passwordchecker.js"></script>
 </body>
 </html>
