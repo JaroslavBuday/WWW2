@@ -71,7 +71,7 @@ function updateStudent($connection, $first_name, $second_name, $age, $life, $col
  * @param object $connection - napojenie na databazu
  * @param integer $id - id ziaka
  * 
- * @return void
+ * @return boolean true - pokial pride k uspesnemu vymazaniu ziaka
  */
 
 function deleteStudent($connection, $id){
@@ -119,7 +119,7 @@ function deleteStudent($connection, $id){
 }
     
 /**
- * Prida ziaka do databazy a presmeruje nas na profil ziaka
+ * Prida ziaka do databazy 
  * 
  * @param object $connection - napojenie na databazu
  * @param string $first_name - meno
@@ -128,7 +128,7 @@ function deleteStudent($connection, $id){
  * @param string $life - informacie o ziakovi
  * @param string $college - fakulta
  * 
- * @return void
+ * @return integer $id - id pridaneho ziaka
  */
 function createStudent($connection, $first_name, $second_name, $age, $life, $college){
     $sql = "INSERT INTO student (first_name, second_name, age, life, college)
@@ -143,9 +143,9 @@ function createStudent($connection, $first_name, $second_name, $age, $life, $col
 
             if(mysqli_stmt_execute($statement)){
                 $id = mysqli_insert_id($connection);
-                
+                return $id;
 
-            redirectUrl("/www2.database/admin/jeden-ziak.php?id=$id");
+            // redirectUrl("/www2.database/admin/jeden-ziak.php?id=$id");
             } else {
                 echo mysqli_stmt_error($statement);  
             }

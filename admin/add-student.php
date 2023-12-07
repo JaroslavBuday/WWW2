@@ -1,6 +1,6 @@
 <?php 
 require "../assets/database.php";
-// require "assets/url.php";
+require "../assets/url.php";
 require "../assets/ziak.php";
 require "../assets/auth.php";
 
@@ -26,7 +26,12 @@ if ($_SERVER["REQUEST_METHOD"]=== "POST"){
 
     $connection = connectionDB();
 
-    createStudent($connection, $first_name, $second_name, $age, $life, $college);
+    $id = createStudent($connection, $first_name, $second_name, $age, $life, $college);
+    if($id){
+        redirectUrl("/www2.database/admin/jeden-ziak.php?id=$id");
+    } else {
+        echo "Žiaka sa nepodarilo vytvoriť";
+    }
 }
 
 
