@@ -2,6 +2,7 @@
     require "../assets/database.php";
     require "../assets/ziak.php";
     require "../assets/auth.php";
+    require "../assets/url.php";
 
     session_start();
 
@@ -37,7 +38,9 @@
             $life = $_POST["life"];
             $college = $_POST["college"];
 
-            updateStudent($connection, $first_name, $second_name, $age, $life, $college, $id);
+            if(updateStudent($connection, $first_name, $second_name, $age, $life, $college, $id)){
+                redirectUrl("/www2.database/admin/jeden-ziak.php?id=$id");
+            };
 
             
     }

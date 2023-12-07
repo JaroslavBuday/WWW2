@@ -1,6 +1,5 @@
 <?php
 
-require "url.php";
 
 /**
  * Získa jedneho žiaka z databazy podla id
@@ -41,7 +40,7 @@ function getStudent($connection, $id, $columns = "*"){
  * @param string $college - fakulta
  * @param integer $id - id ziaka
  * 
- * @return void - nevracia ziadnu hodnotu
+ * @return boolean true - pokial update prebehne v poriadku
  */
 function updateStudent($connection, $first_name, $second_name, $age, $life, $college, $id){
     $sql = "UPDATE student 
@@ -60,9 +59,8 @@ function updateStudent($connection, $first_name, $second_name, $age, $life, $col
         mysqli_stmt_bind_param($stmt,"ssissi", $first_name, $second_name, $age, $life, $college, $id);
 
         if(mysqli_stmt_execute($stmt)){
-
-            redirectUrl("/www2.database/admin/jeden-ziak.php?id=$id");
-           
+            return true;
+                       
         }
     }
 }
