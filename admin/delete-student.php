@@ -2,6 +2,7 @@
     require "../assets/database.php";
     require "../assets/ziak.php";
     require "../assets/auth.php";
+    require "../assets/url.php";
 
     session_start();
 
@@ -12,7 +13,9 @@
     $conn = connectionDB();
 
     if($_SERVER["REQUEST_METHOD"]=== "POST"){
-        deleteStudent($conn, $_GET["id"]);
+        if(deleteStudent($conn, $_GET["id"])){
+            redirectUrl("/www2.database/admin/ziaci.php");
+        };
     }
 
 ?>
