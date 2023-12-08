@@ -20,14 +20,28 @@ $book2 = [
 echo $book1["title"];
 */
 
-// Logika defaukt hodnoty
+// Logika /default hodnoty/ atribut (premenna), metoda (funkcia)
 class book {
-    function __construct($title, $author, $year, $price){
+    function __construct($title, $author, $year, $price){ //atribut
         $this->title = $title;
         $this->author = $author;
         $this->year = $year;
         $this->price = $price;
         $this->currency = "Eur";
+    }
+
+    function bookDescription(){ //metoda
+        return "Názov knihy: " . $this->title . "<br>Autor: " . $this->author . "<br>Rok vydania: " . $this->year . "<br>Cena: " . $this->price . " " . $this->currency . "<br>";
+    }
+
+    function changePriceAmount($amount){
+        // $this->price = $this->price + $amount;
+        $this->price += $amount; //skrateny zapis
+    }
+
+    function changePricePercentage($percentage){
+        // $this->price = $this->price + ($this->price / 100 * $percentage);
+        $this->price += ($this->price / 100 * $percentage);
     }
     }
 
@@ -37,33 +51,13 @@ $book_1 = new book("Harry Potter a Kameň mudrcov", "J. K. Rowling", 1997, 25);
 $book_2 = new book("Harry Potter a Tajomna komnata", "J. K. Rowling", 1998, 30);
 $book_3 = new book("Harry Potter a vezeň z Azkabanu","J. K. Rowling", 1999, 35);
 
-echo $book_1->title;
-echo $book_1->price;
-echo $book_1->currency;
-echo "<br>";
-echo $book_2->title;
-echo $book_2->price;
-echo $book_2->currency;
-echo "<br>";
-echo $book_3->title;
-echo $book_3->price;
-echo $book_3->currency;
-echo "<br>";
+echo $book_1->bookDescription();
 
-class car {
-    function __construct($brand,$type,$color){
-        $this->brand = $brand;
-        $this->type = $type;
-        $this->color = $color;
-        $this->seats = 5;
-    }
-}
+$book_1->changePriceAmount(5);
+echo "Zmena ceny o čiastku: " . $book_1->price . " " . $book_1->currency . "<br>";
+$book_1->changePricePercentage(10);
+echo "Zmena ceny percentuálna: " . $book_1->price . " " . $book_1->currency . "<br>";
 
-$car_1 = new car("KIA","Picanto","red");
-$car_2 = new car("Skoda","Octavia","White");
-$car_3 = new car("Opel","Astra","Blue");
 
-echo $car_1->brand; echo "<br>";
-echo $car_2->type; echo "<br>";
-echo $car_3->seats; 
+
 
