@@ -8,7 +8,11 @@ Zapuzdrenie (Encapsulation)
     -protected = 
 
 Abstrakcia (abstraction)
+    -vytvori sa univerzalna class s najdolezitejsimi funkciami ktore sa daju pouzit pri roznych typoch dalsich class. Napr. vlastnosti uctu ktore sa pouzivaju pri roznych typoch uctov napr klasicky, podnikatelsky, sporiaci, ...
+
 Dedičnosť (Inheritance)
+    - class berie metody z rodicovskej class. Napr univerzalne vlastnosti uctu do sporiaceho, podnikatelskeho , .. zapis= class podnikatelsky extends univerzal
+
 Polymorfizmus (Polimorphism)
 */
 
@@ -19,6 +23,7 @@ class bankAccount {
     // public $second_name;
     // public $income;
     // public $expense;
+    // public $movements;
 
     function __construct($first_name, $second_name, $pin){
         $this->first_name = $first_name ;
@@ -26,6 +31,7 @@ class bankAccount {
         $this->pin = $pin;
         $this->income = 0;
         $this->expense = 0;
+        $this->movements = [];
     }
 
     function pin_checker($user_pin){
@@ -36,24 +42,41 @@ class bankAccount {
     }
     function create_income($amount){
         $this->income += $amount;
+        $this->add_movements($amount);
     }
     function create_expense($amount){
         $this->expense -= $amount;
+        $this->add_movements(-$amount);
+    }
+
+    private function add_movements($money){
+        $this->movements[] = $money;
     }
 }
 
 // Použitie
 $account1 = new bankAccount("Jaro","Buday",1234);
 
-echo $account1->first_name;
-echo "<br>";
-echo $account1->second_name;
-$account1->pin_checker(1234);
+// echo $account1->first_name;
+// echo "<br>";
+// echo $account1->second_name;
+// $account1->pin_checker(1234);
 echo "<br>";
 $account1->create_income(50);
-echo "Príjem: " . $account1->income;
-echo "<br>";
+
 $account1->create_expense(30);
-echo "Výdaj: " . $account1->expense;
+
+$account1->create_income(150);
+var_dump($account1->movements);
 echo "<br>";
-echo "Zostatok na účte: " . $account1->income - $account1->expense;
+
+//    ----   DEDICNOST ----
+
+Echo "Dedicnost";echo "<br>";echo "<br>";
+
+class SaveAccount extends bankAccount {
+   
+}
+
+$account1 = new SaveAccount("Jozko","Varabel",4444);
+echo $account1->first_name;
