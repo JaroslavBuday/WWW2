@@ -1,4 +1,4 @@
-<?php 
+<!-- <?php 
 
 /**
  * Pripojenie sa do databazy
@@ -25,4 +25,4 @@ function connectionDB() {
     // echo "Úspešné prihlásenie do databázy";
     return $conn;
 }
-    
+     -->

@@ -1,8 +1,9 @@
 <?php 
-require "../assets/database.php";
+// require "../assets/database.php";
 require "../assets/url.php";
 require "../assets/ziak.php";
 require "../assets/auth.php";
+require "./classes/Database.php";
 
 session_start();
 
@@ -24,7 +25,10 @@ if ($_SERVER["REQUEST_METHOD"]=== "POST"){
     $life = $_POST["life"];
     $college = $_POST["college"];
 
-    $connection = connectionDB();
+    // $connection = connectionDB();
+    $database = new Database();
+    $connection = $database->connectionDB();
+
 
     $id = createStudent($connection, $first_name, $second_name, $age, $life, $college);
     if($id){

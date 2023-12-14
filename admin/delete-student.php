@@ -1,8 +1,9 @@
 <?php
-    require "../assets/database.php";
+    // require "../assets/database.php";
     require "../assets/ziak.php";
     require "../assets/auth.php";
     require "../assets/url.php";
+    require "./classes/Database.php";
 
     session_start();
 
@@ -10,7 +11,9 @@
         die("Nepovolený prístup");
     }
 
-    $conn = connectionDB();
+    // $conn = connectionDB();
+    $database = new Database();
+    $conn = $database->connectionDB();
 
     if($_SERVER["REQUEST_METHOD"]=== "POST"){
         if(deleteStudent($conn, $_GET["id"])){
