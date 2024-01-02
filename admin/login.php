@@ -1,8 +1,9 @@
 <?php
 // require "../assets/database.php";
-require "../assets/url.php";
+// require "../assets/url.php";
 require "../assets/user.php";
 require "./classes/Database.php";
+require "./classes/Url.php";
 
 session_start();
 
@@ -26,7 +27,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         $_SESSION["logged_in_user_id"] = $id;
         
 
-        redirectUrl("/www2.database/ziaci.php");
+        Url::redirectUrl("/www2.database/ziaci.php");
     } else {
         $error = "Chyba pri prihlásení";
     }

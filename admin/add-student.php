@@ -1,9 +1,10 @@
 <?php 
 // require "../assets/database.php";
-require "../assets/url.php";
+// require "../assets/url.php";
 require "../assets/ziak.php";
 require "../assets/auth.php";
 require "./classes/Database.php";
+require "./classes/Url.php";
 
 session_start();
 
@@ -32,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"]=== "POST"){
 
     $id = createStudent($connection, $first_name, $second_name, $age, $life, $college);
     if($id){
-        redirectUrl("/www2.database/admin/jeden-ziak.php?id=$id");
+        Url::redirectUrl("/www2.database/admin/jeden-ziak.php?id=$id");
     } else {
         echo "Žiaka sa nepodarilo vytvoriť";
     }

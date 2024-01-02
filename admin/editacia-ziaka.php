@@ -2,8 +2,9 @@
     // require "../assets/database.php";
     require "../assets/ziak.php";
     require "../assets/auth.php";
-    require "../assets/url.php";
+    // require "../assets/url.php";
     require "./classes/Database.php";
+    require "./classes/Url.php";
 
     session_start();
 
@@ -43,7 +44,7 @@
             $college = $_POST["college"];
 
             if(updateStudent($connection, $first_name, $second_name, $age, $life, $college, $id)){
-                redirectUrl("/www2.database/admin/jeden-ziak.php?id=$id");
+                Url::redirectUrl("/www2.database/admin/jeden-ziak.php?id=$id");
             };
 
             

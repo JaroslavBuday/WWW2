@@ -1,6 +1,6 @@
 <?php
-
-require "../assets/url.php";
+require "./classes/Url.php";
+// require "../assets/url.php";
 
 // Initialize the session.
 // If you are using session_name("something"), don't forget it now!
@@ -23,6 +23,6 @@ if (ini_get("session.use_cookies")) {
 session_destroy();
 
 // Presmerovanie na uvodnu stranu
-redirectUrl("/www2.database/index.php");
+Url::redirectUrl("/www2.database/index.php");
 
 ?>

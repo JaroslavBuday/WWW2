@@ -1,9 +1,10 @@
 <?php
 
-require "../assets/url.php";
+// require "../assets/url.php";
 // require "../assets/database.php";
 require "../assets/user.php";
 require "./classes/Database.php";
+require "./classes/Url.php";
 
 session_start();
 
@@ -34,7 +35,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         // nastavenie ID uzivatela
         $_SESSION["logged_in_user_id"] = $id;
 
-        redirectUrl("/www2.database/admin/ziaci.php");        
+        Url::redirectUrl("/www2.database/admin/ziaci.php");        
     } else {
         echo " Užívatela sa nepodarilo zaregistrovať";
     }

@@ -145,7 +145,7 @@ function createStudent($connection, $first_name, $second_name, $age, $life, $col
                 $id = mysqli_insert_id($connection);
                 return $id;
 
-            // redirectUrl("/www2.database/admin/jeden-ziak.php?id=$id");
+            
             } else {
                 echo mysqli_stmt_error($statement);  
             }
