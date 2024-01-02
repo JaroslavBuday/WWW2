@@ -16,17 +16,20 @@ class Student{
                 WHERE id = :id";     
                 
         $stmt = $connection->prepare($sql);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
 
-        if($stmt === false) {
-            echo mysqli_error($connection);
-        } else {
-            // mysqli_stmt_bind_param($stmt,"i", $id);
-            $stmt->bindValue(":id", $id, PDO::PARAM_INT);
-
+        try {
             if($stmt->execute()){
                 return $stmt->fetch();
-            } 
+            } else {
+                throw new exception("Získanie dát o jednom študentovi zlyhalo");
+            }
+        } catch (Exception $e){
+            error_log("Chyba pri funkcii getStudent, získanie dát zlyhalo\n", 3, "../errors/error.log");
+            echo "typ chyby: " . $e->getMessage();
         }
+            
+        
     }
 
     /**
@@ -52,23 +55,24 @@ class Student{
                 WHERE id = :id";
 
         $stmt = $connection->prepare($sql);
-
-        if(!$stmt){
-            echo mysqli_error($connection);
-        } else {
             
-            $stmt->bindValue(":first_name", $first_name, PDO::PARAM_STR);
-            $stmt->bindValue(":second_name", $second_name, PDO::PARAM_STR);
-            $stmt->bindValue(":age", $age, PDO::PARAM_INT);
-            $stmt->bindValue(":life", $life, PDO::PARAM_STR);
-            $stmt->bindValue(":college", $college, PDO::PARAM_STR);
-            $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+        $stmt->bindValue(":first_name", $first_name, PDO::PARAM_STR);
+        $stmt->bindValue(":second_name", $second_name, PDO::PARAM_STR);
+        $stmt->bindValue(":age", $age, PDO::PARAM_INT);
+        $stmt->bindValue(":life", $life, PDO::PARAM_STR);
+        $stmt->bindValue(":college", $college, PDO::PARAM_STR);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
 
+        try {
             if($stmt->execute()){
                 return true;
-                        
+            } else {
+                throw new exception("Update študenta zlyhal");
             }
-        }
+        } catch (Exception $e){
+            error_log("Chyba pri funkcii updateStudent\n", 3, "../errors/error.log");
+            echo "typ chyby: " . $e->getMessage();
+        }        
     }
 
     /**
@@ -87,16 +91,19 @@ class Student{
             
         $stmt = $connection->prepare($sql);
 
-        if(!$stmt){
-            echo mysqli_error($connection);
-        } else {
-            $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
 
-            if ($stmt->execute()){
+        try {
+            if($stmt->execute()){
                 return true;
-                
+            } else {
+                throw new exception("Vymazanie študenta zlyhalo");
             }
-        }
+        } catch (Exception $e){
+            error_log("Chyba pri funkcii deleteStudent\n", 3, "../errors/error.log");
+            echo "typ chyby: " . $e->getMessage();
+        }  
+        
     }
 
     /**
@@ -114,17 +121,20 @@ class Student{
             
             $stmt = $connection->prepare($sql);
 
-        if($stmt->execute()){
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        }
+            try {
+                if($stmt->execute()){
+                    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+                } else {
+                    throw new exception("Získanie študentov zlyhalo");
+                }
+            } catch (Exception $e){
+                error_log("Chyba pri funkcii getAllStudents\n", 3, "../errors/error.log");
+                echo "typ chyby: " . $e->getMessage();
+            }  
 
-        // // PREHODIM SI OBJEKT NA ASOCIATIVNE POLE
-        // if (!$result){
-        //     echo mysqli_error($conn);
-        // } else {
-        //     $students = mysqli_fetch_all($result, MYSQLI_ASSOC); 
-        //     return $students;
-        // }
+        
+
+        
     }
         
     /**
@@ -145,24 +155,24 @@ class Student{
 
             $stmt = $connection->prepare($sql);
 
-            if (!$stmt) {
-                echo mysqli_error($connection);
-            } else {
-                $stmt->bindValue(":first_name", $first_name, PDO::PARAM_STR);
-                $stmt->bindValue(":second_name", $second_name, PDO::PARAM_STR);
-                $stmt->bindValue(":age", $age, PDO::PARAM_INT);
-                $stmt->bindValue(":life", $life, PDO::PARAM_STR);
-                $stmt->bindValue(":college", $college, PDO::PARAM_STR);
-                
+            $stmt->bindValue(":first_name", $first_name, PDO::PARAM_STR);
+            $stmt->bindValue(":second_name", $second_name, PDO::PARAM_STR);
+            $stmt->bindValue(":age", $age, PDO::PARAM_INT);
+            $stmt->bindValue(":life", $life, PDO::PARAM_STR);
+            $stmt->bindValue(":college", $college, PDO::PARAM_STR);
+             
+            try {
                 if($stmt->execute()){
                     $id = $connection->lastInsertId();
                     return $id;
-
-                
                 } else {
-                    echo mysqli_stmt_error($statement);  
+                    throw new exception("Vytvorenie študenta zlyhalo");
                 }
-            }
+            } catch (Exception $e){
+                error_log("Chyba pri funkcii createStudent\n", 3, "../errors/error.log");
+                echo "typ chyby: " . $e->getMessage();
+            }  
+            
     }
 }
     
