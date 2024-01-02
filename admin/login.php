@@ -1,9 +1,10 @@
 <?php
 // require "../assets/database.php";
 // require "../assets/url.php";
-require "../assets/user.php";
+// require "../assets/user.php";
 require "./classes/Database.php";
 require "./classes/Url.php";
+require "./classes/User.php";
 
 session_start();
 
@@ -15,9 +16,9 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     $log_email = $_POST["login-email"];
     $log_password = $_POST["login-password"];
 
-    if(authentification($conn, $log_email, $log_password)){
+    if(User::authentification($conn, $log_email, $log_password)){
         // získanie ID užívatela
-        $id = getUserId($conn, $log_email);
+        $id = User::getUserId($conn, $log_email);
 
         session_regenerate_id(true);
 
