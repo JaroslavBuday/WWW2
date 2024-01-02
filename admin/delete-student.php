@@ -1,14 +1,13 @@
 <?php
-    // require "../assets/database.php";
-    require "../assets/ziak.php";
-    require "../assets/auth.php";
-    // require "../assets/url.php";
+    
     require "./classes/Database.php";
     require "./classes/Url.php";
+    require "./classes/Student.php";
+    require "./classes/Auth.php";
 
     session_start();
 
-    if (!isLoggedIn()){
+    if (!Auth::isLoggedIn()){
         die("Nepovolený prístup");
     }
 
@@ -17,7 +16,7 @@
     $conn = $database->connectionDB();
 
     if($_SERVER["REQUEST_METHOD"]=== "POST"){
-        if(deleteStudent($conn, $_GET["id"])){
+        if(Student::deleteStudent($conn, $_GET["id"])){
             Url::redirectUrl("/www2.database/admin/ziaci.php");
         };
     }

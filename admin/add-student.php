@@ -1,14 +1,13 @@
 <?php 
-// require "../assets/database.php";
-// require "../assets/url.php";
-require "../assets/ziak.php";
-require "../assets/auth.php";
+
 require "./classes/Database.php";
 require "./classes/Url.php";
+require "./classes/Student.php";
+require "./classes/Auth.php";
 
 session_start();
 
-if (!isLoggedIn()){
+if (!Auth::isLoggedIn()){
     die("Nepovolený prístup");
 }
 
@@ -31,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"]=== "POST"){
     $connection = $database->connectionDB();
 
 
-    $id = createStudent($connection, $first_name, $second_name, $age, $life, $college);
+    $id = Student::createStudent($connection, $first_name, $second_name, $age, $life, $college);
     if($id){
         Url::redirectUrl("/www2.database/admin/jeden-ziak.php?id=$id");
     } else {

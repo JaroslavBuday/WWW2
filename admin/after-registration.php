@@ -1,8 +1,6 @@
 <?php
 
-// require "../assets/url.php";
-// require "../assets/database.php";
-// require "../assets/user.php";
+
 require "./classes/Database.php";
 require "./classes/Url.php";
 require "./classes/User.php";
