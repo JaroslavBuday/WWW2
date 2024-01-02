@@ -1,5 +1,5 @@
 <?php
-require "./classes/Url.php";
+require "../classes/Url.php";
 
 
 // Initialize the session.

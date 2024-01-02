@@ -1,7 +1,7 @@
 <?php
 
-
-    /**
+class Student{
+/**
      * Získa jedneho žiaka z databazy podla id
      * 
      * @param object $connection - napojenie na databazu
@@ -13,18 +13,18 @@
     public static function getStudent($connection, $id, $columns = "*"){
         $sql = "SELECT $columns 
                 FROM student
-                WHERE id = ?";     
+                WHERE id = :id";     
                 
-        $stmt = mysqli_prepare($connection, $sql);
+        $stmt = $connection->prepare($sql);
 
         if($stmt === false) {
             echo mysqli_error($connection);
         } else {
-            mysqli_stmt_bind_param($stmt,"i", $id);
+            // mysqli_stmt_bind_param($stmt,"i", $id);
+            $stmt->bindValue(":id", $id, PDO::PARAM_INT);
 
-            if(mysqli_stmt_execute($stmt)){
-                $result = mysqli_stmt_get_result($stmt);
-                return mysqli_fetch_array($result, MYSQLI_ASSOC);
+            if($stmt->execute()){
+                return $stmt->fetch();
             } 
         }
     }
@@ -44,21 +44,27 @@
      */
     public static function updateStudent($connection, $first_name, $second_name, $age, $life, $college, $id){
         $sql = "UPDATE student 
-                        SET first_name = ?,
-                            second_name= ?,
-                            age= ?,
-                            life= ?,
-                            college= ? 
-                WHERE id = ?";
+                        SET first_name = :first_name,
+                            second_name= :second_name,
+                            age= :age,
+                            life= :life,
+                            college= :college 
+                WHERE id = :id";
 
-        $stmt = mysqli_prepare($connection, $sql);
+        $stmt = $connection->prepare($sql);
 
         if(!$stmt){
             echo mysqli_error($connection);
         } else {
-            mysqli_stmt_bind_param($stmt,"ssissi", $first_name, $second_name, $age, $life, $college, $id);
+            
+            $stmt->bindValue(":first_name", $first_name, PDO::PARAM_STR);
+            $stmt->bindValue(":second_name", $second_name, PDO::PARAM_STR);
+            $stmt->bindValue(":age", $age, PDO::PARAM_INT);
+            $stmt->bindValue(":life", $life, PDO::PARAM_STR);
+            $stmt->bindValue(":college", $college, PDO::PARAM_STR);
+            $stmt->bindValue(":id", $id, PDO::PARAM_INT);
 
-            if(mysqli_stmt_execute($stmt)){
+            if($stmt->execute()){
                 return true;
                         
             }
@@ -77,16 +83,16 @@
      public static function deleteStudent($connection, $id){
         $sql = "DELETE 
                 FROM student        
-                WHERE id = ?"; 
+                WHERE id = :id"; 
             
-        $stmt = mysqli_prepare($connection, $sql);
+        $stmt = $connection->prepare($sql);
 
         if(!$stmt){
             echo mysqli_error($connection);
         } else {
-            mysqli_stmt_bind_param($stmt,"i", $id);
+            $stmt->bindValue(":id", $id, PDO::PARAM_INT);
 
-            if (mysqli_stmt_execute($stmt)){
+            if ($stmt->execute()){
                 return true;
                 
             }
@@ -101,21 +107,24 @@
      * @return array pole objektov kde kazde pole je jeden ziak
      * */
 
-     public static function getAllStudents(object $conn, $columns = "*"){
+     public static function getAllStudents(object $connection, $columns = "*"){
         //NASTAVENIE SQL DOTAZU
             $sql = "SELECT $columns 
             FROM student";
+            
+            $stmt = $connection->prepare($sql);
 
-        // ODOSLANIE DOTAZU DO DATABAZY-VRATI OBJEKT
-            $result = mysqli_query($conn, $sql); 
-
-        // PREHODIM SI OBJEKT NA ASOCIATIVNE POLE
-        if (!$result){
-            echo mysqli_error($conn);
-        } else {
-            $students = mysqli_fetch_all($result, MYSQLI_ASSOC); 
-            return $students;
+        if($stmt->execute()){
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+
+        // // PREHODIM SI OBJEKT NA ASOCIATIVNE POLE
+        // if (!$result){
+        //     echo mysqli_error($conn);
+        // } else {
+        //     $students = mysqli_fetch_all($result, MYSQLI_ASSOC); 
+        //     return $students;
+        // }
     }
         
     /**
@@ -132,17 +141,21 @@
      */
     public static function createStudent($connection, $first_name, $second_name, $age, $life, $college){
         $sql = "INSERT INTO student (first_name, second_name, age, life, college)
-            VALUES (?,?,?,?,?)";  
+            VALUES (:first_name, :second_name, :age, :life, :college)";  
 
-            $statement = mysqli_prepare($connection, $sql);
+            $stmt = $connection->prepare($sql);
 
-            if (!$statement) {
+            if (!$stmt) {
                 echo mysqli_error($connection);
             } else {
-                mysqli_stmt_bind_param($statement,"ssiss", $first_name, $second_name,$age, $life,$college);
-
-                if(mysqli_stmt_execute($statement)){
-                    $id = mysqli_insert_id($connection);
+                $stmt->bindValue(":first_name", $first_name, PDO::PARAM_STR);
+                $stmt->bindValue(":second_name", $second_name, PDO::PARAM_STR);
+                $stmt->bindValue(":age", $age, PDO::PARAM_INT);
+                $stmt->bindValue(":life", $life, PDO::PARAM_STR);
+                $stmt->bindValue(":college", $college, PDO::PARAM_STR);
+                
+                if($stmt->execute()){
+                    $id = $connection->lastInsertId();
                     return $id;
 
                 
@@ -151,3 +164,5 @@
                 }
             }
     }
+}
+    

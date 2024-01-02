@@ -14,17 +14,20 @@ class User {
      */
     public static function createUser($connection, $first_name, $second_name, $email, $password){
         $sql = "INSERT INTO user (first_name, second_name, email, password)
-            VALUES (?,?,?,?)";  
+            VALUES (:first_name, :second_name, :email, :password)";  
 
-            $statement = mysqli_prepare($connection, $sql);
+            $stmt = $connection->prepare($sql);
 
-            if (!$statement) {
+            if (!$stmt) {
                 echo mysqli_error($connection);
             } else {
-                mysqli_stmt_bind_param($statement,"ssss", $first_name, $second_name, $email, $password);
-
-                mysqli_stmt_execute($statement);
-                $id = mysqli_insert_id($connection);
+                $stmt->bindValue(":first_name", $first_name, PDO::PARAM_STR);
+                $stmt->bindValue(":second_name", $second_name, PDO::PARAM_STR);
+                $stmt->bindValue(":email", $email, PDO::PARAM_STR);
+                $stmt->bindValue(":password", $password, PDO::PARAM_STR);
+                
+                $stmt->execute();
+                $id = $connection->lastInsertId();
                 return $id;
             }
     }
@@ -41,33 +44,50 @@ class User {
     public static function authentification($connection, $log_email, $log_password){
         $sql = "SELECT password
                 FROM user
-                WHERE email = ?";
+                WHERE email = :email";
 
-        $stmt = mysqli_prepare($connection, $sql);
+        $stmt = $connection->prepare($sql); 
 
         if($stmt){
-            mysqli_stmt_bind_param($stmt, "s", $log_email);
+            $stmt->bindValue(":email", $log_email, PDO::PARAM_STR);
 
-            if(mysqli_stmt_execute($stmt)){
-                $result = mysqli_stmt_get_result($stmt);
+            $stmt->execute();
 
-                if($result->num_rows != 0){
-                    $password_database = mysqli_fetch_row($result); // tu je v premennej pole
-                    $user_password_database = $password_database[0]; // tu je v premennej string
-
-                    if($user_password_database){
-                        return password_verify($log_password, $user_password_database);
-                        // vzdy prve dat zadane heslo az potom heslo hashovane z databazy!
-                        // pokial to sedi vrati sa true
-                    }
-                } else {
-                    echo "Nesprávny email";
-                }
-                    
+            if($user = $stmt->fetch()){
+                var_dump($user);
+                return password_verify($log_password, $user["password"]);
             }
-        } else {
-            echo mysqli_error($connection);
         }
+        
+
+        
+
+
+
+
+        // if($stmt){
+        //     $stmt->bindValue(":email", $email, PDO::PARAM_STR);
+
+        //     if($stmt->execute()){
+        //         $result = mysqli_stmt_get_result($stmt);
+
+        //         if($result->num_rows != 0){
+        //             $password_database = mysqli_fetch_row($result); // tu je v premennej pole
+        //             $user_password_database = $password_database[0]; // tu je v premennej string
+
+        //             if($user_password_database){
+        //                 return password_verify($log_password, $user_password_database);
+        //                 // vzdy prve dat zadane heslo az potom heslo hashovane z databazy!
+        //                 // pokial to sedi vrati sa true
+        //             }
+        //         } else {
+        //             echo "Nesprávny email";
+        //         }
+                    
+        //     }
+        // } else {
+        //     echo mysqli_error($connection);
+        // }
     }
 
     /**
@@ -80,16 +100,21 @@ class User {
      */
     public static function getUserId($connection, $email){
         $sql = "SELECT id FROM user
-                WHERE email = ?";
+                WHERE email = :email";
 
-        $stmt = mysqli_prepare($connection, $sql);
+        $stmt = $connection->prepare($sql); 
 
         if($stmt){
-            mysqli_stmt_bind_param($stmt, "s", $email);
-            if(mysqli_stmt_execute($stmt)){
-                $result = mysqli_stmt_get_result($stmt);
-                $id_database = mysqli_fetch_row($result); // pole
-                $user_id = $id_database[0];
+            $stmt->bindValue(":email", $email, PDO::PARAM_STR);
+
+            if($stmt->execute()){
+                // $result = mysqli_stmt_get_result($stmt);
+                // $id_database = mysqli_fetch_row($result); // pole
+                // $user_id = $id_database[0];
+
+                // PDO::FETCH_NUM
+                $result = $stmt->fetch();
+                $user_id = $result[0];
 
                 return $user_id;
             }
