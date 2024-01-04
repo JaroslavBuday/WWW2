@@ -17,3 +17,15 @@ try {
     // v zatvorke : text chyby , /n znamena na novy riadok vzdy , 3 znamena do mojho suboru, cesta k suboru
     echo $e->getMessage();
 }
+
+
+echo "<br>";
+// priklad celociselne delenie - chyby/exception 
+
+try {
+    echo intdiv(12,0);
+} catch (DivisionByZeroError $e){
+    echo "Chyba: " . $e->getMessage();
+} finally {
+    // toto sa vykona vzdy po try alebo catch
+}
