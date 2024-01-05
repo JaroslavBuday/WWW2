@@ -10,7 +10,8 @@
             die("Nepovolený prístup");
         }
 
-        // $connection = connectionDB();
+        $role = $_SESSION["role"];
+
         $database = new Database();
         $connection = $database->connectionDB();
 
@@ -31,6 +32,7 @@
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../query/header-query.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/admin-one-student.css">
     <script src="https://kit.fontawesome.com/81e746884d.js" crossorigin="anonymous"></script>
     
     <title>Document</title>
@@ -38,24 +40,29 @@
 <body>
     <?php require "../assets/admin-header.php"; ?>
     <main>
-        <section class="main-heading">
+        <!-- <section class="main-heading">
             <h1>Informácie o žiakovi</h1>
-        </section>
-        <section>
+        </section> -->
+        <section class="one-student">
             
             <?php if ($students === null): ?>
                 <p>Žiak nefiguruje v databáze</p>
             <?php else: ?>
-                <h2><?= htmlspecialchars($students["first_name"])." ".htmlspecialchars($students["second_name"])  ?></h2>
-                <p>Vek: <?= htmlspecialchars($students["age"])?> </p>
-                <p>Dodatočné informácie: <?= htmlspecialchars($students["life"])?> </p>
-                <p>Fakulta: <?= htmlspecialchars($students["college"])?> </p>
+                <div class="one-student-box">
+                    <h2><?= htmlspecialchars($students["first_name"])." ".htmlspecialchars($students["second_name"])  ?></h2>
+                    <p>Vek: <?= htmlspecialchars($students["age"])?> </p>
+                    <p>Dodatočné informácie: <?= htmlspecialchars($students["life"])?> </p>
+                    <p>Fakulta: <?= htmlspecialchars($students["college"])?> </p>
+                </div>
+                <?php if ($role === "admin"): ?>
+                    <div class="one-student-buttons">
+                        <a class="edit-one-student" href="edit-student.php?id=<?= $students['id']?>">Editovať</a>
+                        <a class="delete-one-student" href="delete-student.php?id=<?= $students['id']?>">Zmazať</a>
+                    </div>
+                <?php endif ?>
             <?php endif ?>
         </section>
-        <section class="buttons">
-            <a href="editacia-ziaka.php?id=<?= $students['id']?>">Editovať</a>
-            <a href="delete-student.php?id=<?= $students['id']?>">Zmazať</a>
-        </section>
+        
         
     </main>
     

@@ -29,8 +29,7 @@ if(isset($_POST["submit"]) and isset($_FILES["image"])){
 
     if($error === 0){
         if($image_size > 9000000){
-            $error_message = "Váš súbor je príliš velký";
-            echo "$error_message";
+            Url::redirectUrl("/www2.database/errors/error-page.php?error_text=Váš súbor je príliš velký! Max. velkosť: 9MB");
         } else {
             $image_extension = pathinfo($image_name, PATHINFO_EXTENSION);
             $image_extension_lower_case = strtolower($image_extension);
@@ -60,11 +59,11 @@ if(isset($_POST["submit"]) and isset($_FILES["image"])){
                 }
 
             } else {
-            Url::redirectUrl("/www2.database/admin/photos.php");
+            Url::redirectUrl("/www2.database/errors/error-page.php?error_text=Typ Vášho súboru nie je povolený! Iba: jpg, jpeg, png");
             }
         }
     } else {
-        Url::redirectUrl("/www2.database/admin/photos.php");
+        Url::redirectUrl("/www2.database/errors/error-page.php?error_text=Chyba pri vkladaní obrázku! Skúste to znova neskôr.");
     }
 
 }

@@ -9,12 +9,13 @@ class User {
      * @param string $second_name - priezvisko
      * @param string $email - emailova adresa
      * @param string $password - heslo uzivatela
+     * @param string $role - rola uzivatela
      * 
      * @return integer $id - id uzivatela
      */
-    public static function createUser($connection, $first_name, $second_name, $email, $password){
-        $sql = "INSERT INTO user (first_name, second_name, email, password)
-            VALUES (:first_name, :second_name, :email, :password)";  
+    public static function createUser($connection, $first_name, $second_name, $email, $password, $role){
+        $sql = "INSERT INTO user (first_name, second_name, email, password, role)
+            VALUES (:first_name, :second_name, :email, :password, :role)";  
 
             $stmt = $connection->prepare($sql);
 
@@ -25,6 +26,7 @@ class User {
                 $stmt->bindValue(":second_name", $second_name, PDO::PARAM_STR);
                 $stmt->bindValue(":email", $email, PDO::PARAM_STR);
                 $stmt->bindValue(":password", $password, PDO::PARAM_STR);
+                $stmt->bindValue(":role", $role, PDO::PARAM_STR);
                 
                 $stmt->execute();
                 $id = $connection->lastInsertId();
@@ -54,40 +56,12 @@ class User {
             $stmt->execute();
 
             if($user = $stmt->fetch()){
-                var_dump($user);
+                
                 return password_verify($log_password, $user["password"]);
             }
         }
         
 
-        
-
-
-
-
-        // if($stmt){
-        //     $stmt->bindValue(":email", $email, PDO::PARAM_STR);
-
-        //     if($stmt->execute()){
-        //         $result = mysqli_stmt_get_result($stmt);
-
-        //         if($result->num_rows != 0){
-        //             $password_database = mysqli_fetch_row($result); // tu je v premennej pole
-        //             $user_password_database = $password_database[0]; // tu je v premennej string
-
-        //             if($user_password_database){
-        //                 return password_verify($log_password, $user_password_database);
-        //                 // vzdy prve dat zadane heslo az potom heslo hashovane z databazy!
-        //                 // pokial to sedi vrati sa true
-        //             }
-        //         } else {
-        //             echo "Nesprávny email";
-        //         }
-                    
-        //     }
-        // } else {
-        //     echo mysqli_error($connection);
-        // }
     }
 
     /**
@@ -107,19 +81,43 @@ class User {
         if($stmt){
             $stmt->bindValue(":email", $email, PDO::PARAM_STR);
 
-            if($stmt->execute()){
-                // $result = mysqli_stmt_get_result($stmt);
-                // $id_database = mysqli_fetch_row($result); // pole
-                // $user_id = $id_database[0];
-
-                // PDO::FETCH_NUM
-                $result = $stmt->fetch();
-                $user_id = $result[0];
-
-                return $user_id;
+            try {
+                if($stmt->execute()){
+                    $result = $stmt->fetch();
+                    $user_id = $result[0];
+    
+                    return $user_id;
+                } else {
+                    throw new Exception("Získanie ID užívatela zlyhalo");
+                }
+            } catch(Exception $e){
+                error_log("Chyba funkcie getUserId\n" , 3 , "../errors/error.log");
+                echo "Typ chyby: " . $e->getMessage();
             }
-        } else {
-            echo mysqli_error($connection);
-        }
+
+        }}
+
+    public static function getUserRole($connection, $id){
+        $sql = "SELECT role FROM user
+                WHERE id = :id";
+
+        $stmt = $connection->prepare($sql); 
+
+        if($stmt){
+            $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+
+            try {
+                if($stmt->execute()){
+                    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                    return $result["role"];
+                } else {
+                    throw new Exception("Získanie role užívatela zlyhalo");
+                }
+            } catch(Exception $e){
+                error_log("Chyba funkcie getUserRole\n" , 3 , "../errors/error.log");
+                echo "Typ chyby: " . $e->getMessage();
+            }
+
+            
     }
-    }
+    }}

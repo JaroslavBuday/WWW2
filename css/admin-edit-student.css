@@ -1,0 +1,60 @@
+main {
+    min-height: 100vh;
+    background: linear-gradient(black, rgb(4, 4, 73));
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    width: 600px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+form input, form textarea {
+    background: none;
+    border: none;
+    border-bottom: 1px solid white;
+    font-size: 20px;
+    color: white;
+    padding: 15px;
+    outline: none;
+}
+
+form input {
+    width: 270px;
+}
+
+form textarea {
+    width: 555px;
+    height: 200px;
+}
+
+input::placeholder {
+    color: rgb(174, 192, 192);
+}
+
+textarea::placeholder {
+    color: rgb(174, 192, 192);
+}
+
+input[type="submit"] {
+    background-color: chocolate;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 1px 1px rgb(109, 53, 13);
+    letter-spacing: 1px;
+    transition: all 0.5s linear;
+}
+
+input[type="submit"]:hover {
+    background-color: rgb(130, 63, 16);
+    box-shadow: 1px 1px black;
+}

@@ -24,9 +24,11 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         $_SESSION["is_logged_in"] = true;
         // nastavenie ID uzivatela
         $_SESSION["logged_in_user_id"] = $id;
-        
+        // nastavenie role uzivatela
+        $_SESSION["role"] = User::getUserRole($connection, $id);
 
-        Url::redirectUrl("/www2.database/admin/ziaci.php");
+        Url::redirectUrl("/www2.database/admin/students.php");
+        
     } else {
         $error = "Chyba pri prihlásení";
     }

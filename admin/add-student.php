@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"]=== "POST"){
 
     $id = Student::createStudent($connection, $first_name, $second_name, $age, $life, $college);
     if($id){
-        Url::redirectUrl("/www2.database/admin/jeden-ziak.php?id=$id");
+        Url::redirectUrl("/www2.database/admin/one-student.php?id=$id");
     } else {
         echo "Žiaka sa nepodarilo vytvoriť";
     }
@@ -51,6 +51,8 @@ if ($_SERVER["REQUEST_METHOD"]=== "POST"){
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../query/header-query.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/admin-edit-student.css">
+    <link rel="stylesheet" href="../query/admin-edit-student-query.css">
     <script src="https://kit.fontawesome.com/81e746884d.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
@@ -59,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"]=== "POST"){
     
     <main>
         <section class="add-form">
-            <?php require "../assets/formular-ziak.php"; ?>
+            <?php require "../assets/form-student.php"; ?>
         </section>
         <section class="home">
             <br>

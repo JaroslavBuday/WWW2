@@ -11,13 +11,14 @@
         die("Nepovolený prístup");
     }
 
-    // $conn = connectionDB();
+    $role = $_SESSION["role"];
+    
     $database = new Database();
     $conn = $database->connectionDB();
 
     if($_SERVER["REQUEST_METHOD"]=== "POST"){
         if(Student::deleteStudent($conn, $_GET["id"])){
-            Url::redirectUrl("/www2.database/admin/ziaci.php");
+            Url::redirectUrl("/www2.database/admin/students.php");
         };
     }
 
@@ -38,13 +39,19 @@
 <body>
     <?php require "../assets/admin-header.php"?>
     <main>
-        <section class="delete-form">
-            <form method="POST">
-                <p>Ste si istý, že chcete tohoto žiaka zmazať?</p>
-                <button>Zmazať</button>
-                <a href="jeden-ziak.php?id=<?=$_GET['id'] ?>">Zrušiť</a>
-            </form>
-        </section>
+        <?php if ($role === "admin"): ?>
+            <section class="delete-form">
+                <form method="POST">
+                    <p>Ste si istý, že chcete tohoto žiaka zmazať?</p>
+                    <button>Zmazať</button>
+                    <a href="one-student.php?id=<?=$_GET['id'] ?>">Zrušiť</a>
+                </form>
+            </section>
+            <?php else:  ?>
+                <section>
+                    <h1>Obsah tejto stránky je k dispozícii iba Administrátorom!</h1>
+                </section>
+            <?php endif ?>
         <?php require "../assets/footer.php"?>
     </main>
     

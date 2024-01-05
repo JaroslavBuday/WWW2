@@ -11,7 +11,8 @@
         die("Nepovolený prístup");
     }
 
-    // $connection = connectionDB();
+    $role = $_SESSION["role"];
+    
     $database = new Database();
     $connection = $database->connectionDB();
 
@@ -43,7 +44,7 @@
             $college = $_POST["college"];
 
             if(Student::updateStudent($connection, $first_name, $second_name, $age, $life, $college, $id)){
-                Url::redirectUrl("/www2.database/admin/jeden-ziak.php?id=$id");
+                Url::redirectUrl("/www2.database/admin/one-student.php?id=$id");
             };
 
             
@@ -60,14 +61,25 @@
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../query/header-query.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/admin-edit-student.css">
+    <link rel="stylesheet" href="../query/admin-edit-student-query.css">
     <script src="https://kit.fontawesome.com/81e746884d.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <body>
     <?php require "../assets/admin-header.php"; ?>
     
-    <?php require "../assets/formular-ziak.php"; ?>
+    <main>
+        <?php 
+            if ($role === "admin"){
+                require "../assets/form-student.php";
+                } else {
+                    echo "<h1>Obsah tejto stránky je k dispozícii iba Administrátorom!</h1>";
+                }
+        ?>
 
+    </main>
+    
     <?php require "../assets/footer.php"; ?>
     <script src="../js/header.js"></script>
 </body>
