@@ -41,7 +41,7 @@
             <h1>Zoznam žiakov školy</h1>
         </section>
         <section class="filter">
-            <input type="text" class="filter-input">
+            <input type="text" class="filter-input" placeholder="Hladať">
         </section>
         <section class="students-list">
             <?php if(empty($students)):    ?>

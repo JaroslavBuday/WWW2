@@ -9,6 +9,7 @@ main {
 
 }
 
+/* main heading section */
 .main-heading h1 {
     text-align: center;
     margin-bottom: 30px;
@@ -19,6 +20,31 @@ main {
     text-shadow: 1px 1px rgb(33, 15, 125);
 }
 
+/* filter section */
+.filter {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.filter-input {
+    width: 300px;
+    padding: 10px;
+    outline: none;
+    font-size: 18px;
+    border: none;
+    /* border-radius: 5px; */
+    clip-path: polygon(4% 0, 97% 1%, 100% 50%, 97% 100%, 4% 100%, 0% 50%);
+}
+
+.filter-input:focus {
+    background-color: rgba(240, 255, 255, 0.481);
+}
+
+.filter-input::placeholder {
+    color: black;
+}
+
+/* students section */
 .all-students {
     display: flex;
     flex-direction: row;
